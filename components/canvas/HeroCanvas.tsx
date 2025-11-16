@@ -2,10 +2,7 @@
 
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei';
-import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing';
-import { BlendFunction } from 'postprocessing';
-import FluidBackground from '../3d/FluidBackground';
+import { PerspectiveCamera } from '@react-three/drei';
 import ParticleField from '../3d/ParticleField';
 import { useStore } from '@/lib/store/useStore';
 
@@ -14,38 +11,14 @@ function Scene() {
     <>
       <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={75} />
       
-      {/* Lights */}
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[10, 10, 5]} intensity={1} color="#6366f1" />
-      <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#a855f7" />
-      <pointLight position={[0, 0, 4]} intensity={1.5} color="#ffffff" />
+      {/* Simplified Lights */}
+      <ambientLight intensity={0.4} />
+      <directionalLight position={[10, 10, 5]} intensity={0.8} color="#6366f1" />
 
-      {/* 3D Elements */}
-      <FluidBackground />
+      {/* Only Particle Field - Fluid Background disabled for performance */}
       <ParticleField />
 
-      {/* Post-processing effects */}
-      <EffectComposer>
-        <Bloom
-          intensity={0.5}
-          luminanceThreshold={0.9}
-          luminanceSmoothing={0.9}
-          blendFunction={BlendFunction.ADD}
-        />
-        <ChromaticAberration
-          offset={[0.0005, 0.0005]}
-          blendFunction={BlendFunction.NORMAL}
-        />
-      </EffectComposer>
-
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 2}
-        autoRotate
-        autoRotateSpeed={0.5}
-      />
+      {/* Post-processing disabled for performance */}
     </>
   );
 }
@@ -53,23 +26,29 @@ function Scene() {
 export default function HeroCanvas() {
   const performanceMode = useStore((state) => state.performanceMode);
 
-  if (performanceMode === 'low') {
-    return null;
+  // Disable on mobile and low performance mode for better performance
+  if (typeof window !== 'undefined') {
+    const isMobile = window.innerWidth < 1024;
+    if (isMobile || performanceMode === 'low') {
+      return null;
+    }
   }
 
   return (
-    <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0 -z-10 opacity-40">
       <Canvas
         gl={{
-          antialias: true,
+          antialias: false, // Disabled for performance
           alpha: true,
           powerPreference: 'high-performance',
+          stencil: false,
+          depth: true,
         }}
-        dpr={performanceMode === 'high' ? [1, 2] : [1, 1.5]}
+        dpr={[1, 1.5]} // Reduced DPR for better performance
+        frameloop="demand" // Only render when needed
       >
         <Suspense fallback={null}>
           <Scene />
-          <Environment preset="night" />
         </Suspense>
       </Canvas>
     </div>

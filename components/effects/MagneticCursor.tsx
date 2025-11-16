@@ -1,159 +1,278 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { motion, useSpring } from 'framer-motion';
-import { useStore } from '@/lib/store/useStore';
-import { useMousePosition } from '@/lib/hooks/useMousePosition';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 
 export default function MagneticCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const cursorDotRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isPointer, setIsPointer] = useState(false);
+  const [cursorText, setCursorText] = useState('');
+  const [cursorVariant, setCursorVariant] = useState<'default' | 'hover' | 'text' | 'drag'>('default');
   
-  useMousePosition(); // Initialize mouse tracking
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
   
-  const cursor = useStore((state) => state.cursor);
-  const performanceMode = useStore((state) => state.performanceMode);
+  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
+  const cursorXSpring = useSpring(mouseX, springConfig);
+  const cursorYSpring = useSpring(mouseY, springConfig);
   
-  // Smooth spring animations
-  const cursorX = useSpring(0, {
-    damping: 25,
-    stiffness: 200,
-    mass: 0.5,
-  });
-  
-  const cursorY = useSpring(0, {
-    damping: 25,
-    stiffness: 200,
-    mass: 0.5,
-  });
-  
-  const cursorDotX = useSpring(0, {
-    damping: 20,
-    stiffness: 400,
-    mass: 0.1,
-  });
-  
-  const cursorDotY = useSpring(0, {
-    damping: 20,
-    stiffness: 400,
-    mass: 0.1,
-  });
+  const dotSpringConfig = { damping: 30, stiffness: 500, mass: 0.3 };
+  const dotXSpring = useSpring(mouseX, dotSpringConfig);
+  const dotYSpring = useSpring(mouseY, dotSpringConfig);
 
-  // Update cursor position
   useEffect(() => {
-    cursorX.set(cursor.position.x);
-    cursorY.set(cursor.position.y);
-    cursorDotX.set(cursor.position.x);
-    cursorDotY.set(cursor.position.y);
-  }, [cursor.position, cursorX, cursorY, cursorDotX, cursorDotY]);
+    // Check if device supports hover (not touch-only)
+    const supportsHover = window.matchMedia('(hover: hover)').matches;
+    if (!supportsHover) return;
 
-  // Handle hover effects on magnetic elements
-  useEffect(() => {
-    const magneticElements = document.querySelectorAll('[data-magnetic]');
-    
-    const handleMouseEnter = () => {
-      useStore.getState().setCursorHovering(true);
-    };
-    
-    const handleMouseLeave = () => {
-      useStore.getState().setCursorHovering(false);
-      useStore.getState().setCursorText('');
-    };
-    
-    magneticElements.forEach((element) => {
-      element.addEventListener('mouseenter', handleMouseEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
       
-      // Get cursor text from data attribute
-      const cursorText = element.getAttribute('data-cursor-text');
-      if (cursorText) {
-        element.addEventListener('mouseenter', () => {
-          useStore.getState().setCursorText(cursorText);
-        });
-      }
-    });
-    
+      if (!isVisible) setIsVisible(true);
+    };
+
+    const handleMouseEnter = () => setIsVisible(true);
+    const handleMouseLeave = () => setIsVisible(false);
+
+    // Check if cursor is over interactive elements
+    const checkCursorStyle = (target: HTMLElement | null) => {
+      if (!target) return;
+
+      const computedStyle = window.getComputedStyle(target);
+      const isClickable = 
+        target.tagName === 'A' ||
+        target.tagName === 'BUTTON' ||
+        target.onclick !== null ||
+        computedStyle.cursor === 'pointer' ||
+        target.hasAttribute('data-cursor-hover');
+
+      setIsPointer(isClickable);
+
+      // Check for custom cursor attributes
+      const cursorTextAttr = target.getAttribute('data-cursor-text');
+      const cursorVariantAttr = target.getAttribute('data-cursor-variant');
+      
+      setCursorText(cursorTextAttr || '');
+      setCursorVariant((cursorVariantAttr as any) || (isClickable ? 'hover' : 'default'));
+    };
+
+    const handleMouseOver = (e: MouseEvent) => {
+      checkCursorStyle(e.target as HTMLElement);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseenter', handleMouseEnter);
+    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('mouseover', handleMouseOver);
+
     return () => {
-      magneticElements.forEach((element) => {
-        element.removeEventListener('mouseenter', handleMouseEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
-      });
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseenter', handleMouseEnter);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('mouseover', handleMouseOver);
+    };
+  }, [mouseX, mouseY, isVisible]);
+
+  // Magnetic effect on elements with data-magnetic attribute
+  useEffect(() => {
+    const handleMagnetic = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest('[data-magnetic]');
+      if (!target) return;
+
+      const rect = target.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const distanceX = e.clientX - centerX;
+      const distanceY = e.clientY - centerY;
+      
+      const maxDistance = 100;
+      const strength = 0.3;
+      
+      const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+      
+      if (distance < maxDistance) {
+        const pullX = distanceX * strength;
+        const pullY = distanceY * strength;
+        
+        (target as HTMLElement).style.transform = `translate(${pullX}px, ${pullY}px)`;
+      }
+    };
+
+    const handleMagneticLeave = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.hasAttribute('data-magnetic')) {
+        target.style.transform = 'translate(0, 0)';
+      }
+    };
+
+    document.addEventListener('mousemove', handleMagnetic);
+    document.addEventListener('mouseleave', handleMagneticLeave, true);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMagnetic);
+      document.removeEventListener('mouseleave', handleMagneticLeave, true);
     };
   }, []);
 
-  // Hide on touch devices
-  if (typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
-    return null;
-  }
+  // Hide default cursor on hover elements
+  useEffect(() => {
+    if (isVisible) {
+      document.body.style.cursor = 'none';
+    }
+    return () => {
+      document.body.style.cursor = 'auto';
+    };
+  }, [isVisible]);
 
-  // Disable for low performance mode
-  if (performanceMode === 'low') {
-    return null;
-  }
+  const cursorVariants = {
+    default: {
+      width: 40,
+      height: 40,
+      backgroundColor: 'rgba(99, 102, 241, 0.1)',
+      border: '2px solid rgba(99, 102, 241, 0.5)',
+      mixBlendMode: 'normal' as const,
+    },
+    hover: {
+      width: 80,
+      height: 80,
+      backgroundColor: 'rgba(168, 85, 247, 0.15)',
+      border: '2px solid rgba(168, 85, 247, 0.8)',
+      mixBlendMode: 'difference' as const,
+    },
+    text: {
+      width: 120,
+      height: 120,
+      backgroundColor: 'rgba(99, 102, 241, 0.05)',
+      border: '1px solid rgba(99, 102, 241, 0.3)',
+      mixBlendMode: 'normal' as const,
+    },
+    drag: {
+      width: 60,
+      height: 60,
+      backgroundColor: 'rgba(168, 85, 247, 0.2)',
+      border: '3px solid rgba(168, 85, 247, 1)',
+      mixBlendMode: 'normal' as const,
+    },
+  };
 
-  const cursorSize = cursor.isHovering ? 60 : 40;
-  const dotSize = cursor.isHovering ? 0 : 8;
+  if (!isVisible) return null;
 
   return (
     <>
-      {/* Main cursor */}
+      {/* Main Cursor */}
       <motion.div
         ref={cursorRef}
-        className="pointer-events-none fixed left-0 top-0 z-[9999] hidden mix-blend-difference lg:block"
+        className="fixed top-0 left-0 pointer-events-none z-[10000] rounded-full"
         style={{
-          x: cursorX,
-          y: cursorY,
+          x: cursorXSpring,
+          y: cursorYSpring,
           translateX: '-50%',
           translateY: '-50%',
         }}
+        animate={cursorVariant}
+        variants={cursorVariants}
+        transition={{
+          type: 'spring',
+          stiffness: 300,
+          damping: 20,
+          mass: 0.5,
+        }}
       >
-        <motion.div
-          className="relative flex items-center justify-center rounded-full border-2 border-white"
-          animate={{
-            width: cursorSize,
-            height: cursorSize,
-            opacity: cursor.isHovering ? 0.3 : 0.5,
-          }}
-          transition={{
-            type: 'spring',
-            stiffness: 300,
-            damping: 20,
-          }}
-        >
-          {cursor.cursorText && (
-            <motion.span
-              className="text-xs font-medium text-white"
-              initial={{ opacity: 0, scale: 0 }}
+        {/* Cursor Text */}
+        <AnimatePresence>
+          {cursorText && (
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center text-white text-xs font-semibold uppercase tracking-wider"
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.2 }}
             >
-              {cursor.cursorText}
-            </motion.span>
+              {cursorText}
+            </motion.div>
           )}
-        </motion.div>
+        </AnimatePresence>
+
+        {/* Animated ring effect on hover */}
+        <AnimatePresence>
+          {cursorVariant === 'hover' && (
+            <motion.div
+              className="absolute inset-0 rounded-full border-2 border-accent-400"
+              initial={{ scale: 1, opacity: 0.8 }}
+              animate={{ 
+                scale: 1.5, 
+                opacity: 0,
+              }}
+              exit={{ scale: 1, opacity: 0 }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: 'easeOut',
+              }}
+            />
+          )}
+        </AnimatePresence>
       </motion.div>
 
-      {/* Cursor dot */}
+      {/* Center Dot */}
       <motion.div
         ref={cursorDotRef}
-        className="pointer-events-none fixed left-0 top-0 z-[9999] hidden rounded-full bg-white mix-blend-difference lg:block"
+        className="fixed top-0 left-0 w-1.5 h-1.5 pointer-events-none z-[10001] rounded-full"
         style={{
-          x: cursorDotX,
-          y: cursorDotY,
+          x: dotXSpring,
+          y: dotYSpring,
           translateX: '-50%',
           translateY: '-50%',
         }}
         animate={{
-          width: dotSize,
-          height: dotSize,
-          opacity: cursor.isHovering ? 0 : 1,
+          backgroundColor: isPointer 
+            ? 'rgba(168, 85, 247, 1)' 
+            : 'rgba(99, 102, 241, 1)',
+          scale: isPointer ? 1.5 : 1,
         }}
         transition={{
           type: 'spring',
           stiffness: 500,
-          damping: 28,
+          damping: 30,
         }}
       />
+
+      {/* Trail effect */}
+      <motion.div
+        className="fixed top-0 left-0 pointer-events-none z-[9999]"
+        style={{
+          x: cursorXSpring,
+          y: cursorYSpring,
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
+      >
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: 20 - i * 5,
+              height: 20 - i * 5,
+              backgroundColor: `rgba(99, 102, 241, ${0.1 - i * 0.03})`,
+            }}
+            animate={{
+              scale: [1, 1.5, 1],
+              opacity: [0.3, 0.1, 0],
+            }}
+            transition={{
+              duration: 1,
+              repeat: Infinity,
+              delay: i * 0.2,
+              ease: 'easeOut',
+            }}
+          />
+        ))}
+      </motion.div>
     </>
   );
 }

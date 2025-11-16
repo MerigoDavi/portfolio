@@ -1,14 +1,23 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useStore } from '@/lib/store/useStore';
 import LoadingScreen from '@/components/LoadingScreen';
 import NewHeroSection from '@/components/sections/NewHeroSection';
-import AboutSection from '@/components/sections/AboutSection';
-import SkillsSection from '@/components/sections/SkillsSection';
-import ProjectsSection from '@/components/sections/ProjectsSection';
-import ContactSection from '@/components/sections/ContactSection';
-import Footer from '@/components/Footer';
+
+// Lazy load sections for better performance
+const AboutSection = lazy(() => import('@/components/sections/AboutSection'));
+const SkillsSection = lazy(() => import('@/components/sections/SkillsSection'));
+const ProjectsSection = lazy(() => import('@/components/sections/ProjectsSection'));
+const ContactSection = lazy(() => import('@/components/sections/ContactSection'));
+const Footer = lazy(() => import('@/components/Footer'));
+
+// Section loading fallback
+const SectionFallback = () => (
+  <div className="min-h-screen flex items-center justify-center bg-neutral-950">
+    <div className="w-12 h-12 border-4 border-primary-500/20 border-t-primary-500 rounded-full animate-spin" />
+  </div>
+);
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,13 +46,23 @@ export default function Home() {
   return (
     <>
       {isLoading && <LoadingScreen />}
-      <main className="relative overflow-hidden">
+      <main id="main-content" className="relative overflow-hidden">
         <NewHeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <ContactSection />
-        <Footer />
+        <Suspense fallback={<SectionFallback />}>
+          <AboutSection />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <SkillsSection />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <ProjectsSection />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <ContactSection />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <Footer />
+        </Suspense>
       </main>
     </>
   );

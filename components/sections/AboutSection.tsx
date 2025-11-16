@@ -19,71 +19,107 @@ export default function AboutSection() {
 
   const timeline = [
     {
-      year: '2024',
-      icon: Trophy,
-      title: 'Award-Winning Projects',
-      company: 'Freelance',
-      description: 'Created multiple award-winning web experiences featured on Awwwards and CSS Design Awards. Specialized in WebGL, creative animations, and cutting-edge web technologies.',
-      skills: ['Next.js 14', 'Three.js', 'GSAP', 'WebGL'],
-      color: 'from-primary-500 to-accent-500',
-    },
-    {
-      year: '2022',
-      icon: Briefcase,
-      title: 'Senior Frontend Developer',
-      company: 'Tech Company',
-      description: 'Led frontend architecture for high-traffic applications serving millions of users. Implemented micro-frontend architecture and design system used across 20+ products.',
-      skills: ['React', 'TypeScript', 'GraphQL', 'Microservices'],
-      color: 'from-blue-500 to-cyan-500',
-    },
-    {
-      year: '2020',
-      icon: Code2,
-      title: 'Full-Stack Developer',
-      company: 'Startup',
-      description: 'Built and scaled MVPs from concept to production. Developed real-time collaborative tools and implemented CI/CD pipelines for rapid iteration.',
-      skills: ['Node.js', 'MongoDB', 'AWS', 'Docker'],
+      year: '2023',
+      icon: Palette,
+      title: 'Web Designer',
+      company: 'EVA Colorido',
+      description: 'Responsável pela entrega de elementos visuais e gerenciamento de estoque de templates. Criei recursos para uma plataforma de streaming de conteúdo artesanal usando Figma.',
+      skills: ['Figma', 'UI/UX', 'Design'],
       color: 'from-purple-500 to-pink-500',
     },
     {
-      year: '2018',
+      year: '2023',
       icon: GraduationCap,
-      title: 'Computer Science Degree',
-      company: 'University',
-      description: 'Graduated with honors focusing on algorithms, data structures, and human-computer interaction. Published research on web accessibility.',
-      skills: ['Algorithms', 'UX Research', 'ML Basics'],
+      title: 'Educators Tech Track',
+      company: 'Oracle Academy / Inteli',
+      description: 'Participação no programa Educators Tech Track, focado em desenvolver habilidades de liderança e educação em tecnologia através de metodologias inovadoras.',
+      skills: ['Educação', 'Liderança', 'Tecnologia'],
+      color: 'from-green-500 to-emerald-500',
+    },
+    {
+      year: '2023',
+      icon: Code2,
+      title: 'Rede Social para Voluntários',
+      company: 'ONG Parceiros Voluntários / Inteli',
+      description: 'Desenvolvimento de solução tecnológica inovadora utilizando metodologia PBL, focando em resolver problemas reais da indústria com abordagem colaborativa.',
+      skills: ['Python', 'React', 'Problem Solving'],
+      color: 'from-cyan-500 to-blue-500',
+    },
+    {
+      year: '2024',
+      icon: Briefcase,
+      title: 'Estagiário de Soluções de TI',
+      company: 'BTG Pactual',
+      description: 'Trabalhei no departamento de Soluções de TI, dando continuidade ao desenvolvimento do servidor de autenticação do banco. Entreguei duas novas seções de configuração de segurança e módulos de verificação de identidade.',
+      skills: ['Cibersegurança', 'Frontend', 'Backend'],
+      color: 'from-blue-500 to-cyan-500',
+    },
+    {
+      year: '2024',
+      icon: Sparkles,
+      title: 'Sistema de Previsão de Gás',
+      company: 'Compass / Inteli',
+      description: 'Desenvolvimento de modelo preditivo utilizando técnicas de Machine Learning e análise de dados para resolver problemas complexos de predição e otimização.',
+      skills: ['Machine Learning', 'Python', 'Data Analysis'],
       color: 'from-amber-500 to-orange-500',
+    },
+    {
+      year: '2024',
+      icon: Code2,
+      title: 'IoT de Monitoramento Florestal',
+      company: 'Abundance / Inteli',
+      description: 'Desenvolvimento de solução completa focada em criar impacto positivo através da tecnologia, utilizando stack moderna e práticas de desenvolvimento ágil.',
+      skills: ['Full-Stack', 'TypeScript', 'React'],
+      color: 'from-violet-500 to-purple-500',
+    },
+    {
+      year: '2024',
+      icon: Zap,
+      title: 'Sistema Automatizado de Farmácos',
+      company: 'HC Unicamp / Inteli',
+      description: 'Criação de sistema voltado para área da saúde, integrando tecnologias modernas para melhorar processos e facilitar o acesso a serviços.',
+      skills: ['Healthcare Tech', 'API Integration', 'UX Design'],
+      color: 'from-rose-500 to-red-500',
+    },
+    {
+      year: '2024',
+      icon: Award,
+      title: 'Análise de Patologias Estruturais com IA',
+      company: 'IPT / Inteli',
+      description: 'Desenvolvimento de solução tecnológica em parceria com o IPT, aplicando conhecimentos avançados de engenharia para resolver desafios técnicos complexos.',
+      skills: ['Research', 'Innovation', 'Engineering'],
+      color: 'from-indigo-500 to-blue-500',
     },
   ];
 
   const expertise = [
     { 
       icon: Code2, 
-      title: 'Full-Stack Development', 
-      desc: 'Building scalable applications with React, Next.js, TypeScript, and Node.js',
+      title: 'Desenvolvimento Full-Stack', 
+      desc: 'Construindo aplicações escaláveis com React, TypeScript, Python e Node.js',
       color: 'from-blue-500 to-cyan-500',
-      percentage: 95,
+      percentage: 90,
     },
     { 
       icon: Palette, 
       title: 'UI/UX Design', 
-      desc: 'Creating beautiful interfaces with Figma, design systems, and creative animations',
+      desc: 'Criando interfaces elegantes com Figma, sistemas de design e animações criativas',
       color: 'from-purple-500 to-pink-500',
-      percentage: 90,
+      percentage: 88,
     },
     { 
       icon: Sparkles, 
-      title: '3D & Creative Coding', 
-      desc: 'Crafting immersive experiences with Three.js, WebGL, and advanced GLSL shaders',
+      title: 'Machine Learning & IA', 
+      desc: 'Desenvolvendo soluções com inteligência artificial, visão computacional e modelos preditivos',
       color: 'from-amber-500 to-orange-500',
-      percentage: 85,
+      percentage: 82,
     },
   ];
 
   const stats = [
-    { icon: Award, value: '5+', label: 'Years Experience' },
-    { icon: Zap, value: '100+', label: 'Projects Delivered' },
-    { icon: Users, value: '50+', label: 'Happy Clients' },
+    { icon: Award, value: '2+', label: 'Anos de Experiência' },
+    { icon: Zap, value: '5+', label: 'Projetos Entregues' },
+    { icon: Users, value: '4', label: 'Prêmios Conquistados' },
   ];
 
   useEffect(() => {
@@ -186,17 +222,17 @@ export default function AboutSection() {
             className="inline-block mb-6"
           >
             <span className="px-4 py-2 rounded-full glass text-sm font-semibold text-primary-300 border border-primary-500/20">
-              About Me
+              Sobre Mim
             </span>
           </motion.div>
           
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Crafting Digital <span className="text-gradient">Excellence</span>
+            Construindo Excelência <span className="text-gradient">Digital</span>
           </h2>
           
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            A creative developer passionate about building exceptional web experiences 
-            that blend elegant code with stunning visuals
+            Desenvolvedor criativo apaixonado por construir experiências web excepcionais 
+            que combinam código elegante com visuais impressionantes
           </p>
         </div>
 
@@ -213,21 +249,21 @@ export default function AboutSection() {
               className="space-y-6"
             >
               <p className="text-2xl text-neutral-300 leading-relaxed">
-                I'm a <span className="text-gradient font-bold">creative developer</span> who 
-                transforms complex ideas into intuitive digital experiences.
+                Sou um <span className="text-gradient font-bold">desenvolvedor criativo</span> que 
+                transforma ideias complexas em experiências digitais intuitivas.
               </p>
 
               <p className="text-lg text-neutral-400 leading-relaxed">
-                With over <span className="text-primary-400 font-semibold">5 years of experience</span>, 
-                I specialize in building high-performance web applications that don't just work—they 
-                captivate and inspire users at every interaction.
+                Estudante de <span className="text-primary-400 font-semibold">Engenharia da Computação</span> no Inteli, 
+                me especializo em construir aplicações web de alta performance que não apenas funcionam—elas 
+                cativam e inspiram os usuários em cada interação.
               </p>
 
               <p className="text-lg text-neutral-400 leading-relaxed">
-                My approach combines technical excellence with creative problem-solving, always 
-                pushing the boundaries of what's possible on the web while maintaining 
-                <span className="text-accent-400 font-semibold"> accessibility</span> and 
-                <span className="text-primary-400 font-semibold"> performance</span> at the core.
+                Minha abordagem combina excelência técnica com resolução criativa de problemas, sempre 
+                empurrando os limites do que é possível na web, mantendo 
+                <span className="text-accent-400 font-semibold"> acessibilidade</span> e 
+                <span className="text-primary-400 font-semibold"> performance</span> como prioridade.
               </p>
             </motion.div>
 
@@ -344,9 +380,9 @@ export default function AboutSection() {
             className="text-center mb-16"
           >
             <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Professional <span className="text-gradient">Journey</span>
+              Jornada <span className="text-gradient">Profissional</span>
             </h3>
-            <p className="text-neutral-400 text-lg">Key milestones in my career</p>
+            <p className="text-neutral-400 text-lg">Principais marcos da minha carreira</p>
           </motion.div>
 
           {/* Timeline Line */}

@@ -171,29 +171,29 @@ export default function ContactSection() {
     { 
       icon: Mail, 
       label: 'Email', 
-      value: 'hello@portfolio.dev', 
-      href: 'mailto:hello@portfolio.dev',
+      value: 'davi.ferreira@sou.inteli.edu.br', 
+      href: 'mailto:davi.ferreira@sou.inteli.edu.br',
       color: 'from-blue-500 to-cyan-500',
     },
     { 
       icon: Phone, 
-      label: 'Phone', 
-      value: '+1 (555) 123-4567', 
-      href: 'tel:+15551234567',
+      label: 'Telefone', 
+      value: '+55 12 98175 7449', 
+      href: 'tel:+5512981757449',
       color: 'from-green-500 to-emerald-500',
     },
     { 
       icon: MapPin, 
-      label: 'Location', 
-      value: 'San Francisco, CA', 
+      label: 'Localização', 
+      value: 'São Paulo, SP, Brasil', 
       href: null,
       color: 'from-purple-500 to-pink-500',
     },
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub', color: 'hover:text-[#333]' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: 'hover:text-[#0077B5]' },
+    { icon: Github, href: 'https://github.com/MerigoDavi', label: 'GitHub', color: 'hover:text-[#333]' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/DaviOliveiraFerreira', label: 'LinkedIn', color: 'hover:text-[#0077B5]' },
     { icon: Twitter, href: 'https://twitter.com', label: 'Twitter', color: 'hover:text-[#1DA1F2]' },
   ];
 
@@ -243,16 +243,16 @@ export default function ContactSection() {
             className="inline-block mb-6"
           >
             <span className="px-4 py-2 rounded-full glass text-sm font-semibold text-primary-300 border border-primary-500/20">
-              Get In Touch
+              Entre em Contato
             </span>
           </motion.div>
           
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Let's Work <span className="text-gradient">Together</span>
+            Vamos Trabalhar <span className="text-gradient">Juntos</span>
           </h2>
           
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Have a project in mind? Let's create something amazing together
+            Tem um projeto em mente? Vamos criar algo incrível juntos
           </p>
         </div>
 
@@ -261,7 +261,7 @@ export default function ContactSection() {
           <div className="space-y-6 lg:col-span-2 contact-info-container">
             <div className="glass-strong backdrop-blur-2xl rounded-3xl p-8 border border-white/10">
               <h3 className="mb-8 text-2xl font-bold text-white">
-                Contact Information
+                Informações de Contato
               </h3>
 
               <div className="space-y-6">
@@ -323,14 +323,14 @@ export default function ContactSection() {
                     />
                   </div>
                   <p className="text-sm text-neutral-300">
-                    Available for new projects
+                    Disponível para novos projetos
                   </p>
                 </div>
               </div>
 
               {/* Social Links */}
               <div className="mt-8 border-t border-neutral-800 pt-6 social-links-container">
-                <p className="text-sm text-neutral-400 mb-4">Follow me on</p>
+                <p className="text-sm text-neutral-400 mb-4">Me siga em</p>
                 <div className="flex gap-4">
                   {socialLinks.map((social) => (
                     <motion.a
@@ -372,7 +372,7 @@ export default function ContactSection() {
                     htmlFor="name"
                     className="mb-2 block text-sm font-medium text-neutral-300"
                   >
-                    Name <span className="text-red-400">*</span>
+                    Nome <span className="text-red-400">*</span>
                   </label>
                   <div className="relative">
                     <motion.input
@@ -393,7 +393,7 @@ export default function ContactSection() {
                           ? 'ring-primary-500'
                           : 'ring-transparent focus:ring-primary-500'
                       }`}
-                      placeholder="John Doe"
+                      placeholder="Seu nome"
                       whileFocus={{ scale: 1.01 }}
                     />
                     
@@ -462,7 +462,7 @@ export default function ContactSection() {
                           ? 'ring-primary-500'
                           : 'ring-transparent focus:ring-primary-500'
                       }`}
-                      placeholder="john@example.com"
+                      placeholder="seu@email.com"
                       whileFocus={{ scale: 1.01 }}
                     />
                     
@@ -509,7 +509,7 @@ export default function ContactSection() {
                     htmlFor="message"
                     className="mb-2 block text-sm font-medium text-neutral-300"
                   >
-                    Message <span className="text-red-400">*</span>
+                    Mensagem <span className="text-red-400">*</span>
                   </label>
                   <div className="relative">
                     <motion.textarea
@@ -530,7 +530,7 @@ export default function ContactSection() {
                           ? 'ring-primary-500'
                           : 'ring-transparent focus:ring-primary-500'
                       }`}
-                      placeholder="Tell me about your project..."
+                      placeholder="Conte-me sobre seu projeto..."
                       whileFocus={{ scale: 1.01 }}
                     />
                     
@@ -567,18 +567,18 @@ export default function ContactSection() {
                       {status === 'sending' && (
                         <>
                           <Loader2 className="h-5 w-5 animate-spin" />
-                          Sending...
+                          Enviando...
                         </>
                       )}
                       {status === 'success' && (
                         <>
                           <Check className="h-5 w-5" />
-                          Message Sent!
+                          Mensagem Enviada!
                         </>
                       )}
                       {(status === 'idle' || status === 'error') && (
                         <>
-                          Send Message
+                          Enviar Mensagem
                           <Send className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                         </>
                       )}
@@ -605,7 +605,7 @@ export default function ContactSection() {
                     >
                       <p className="text-center text-sm text-green-400 flex items-center justify-center gap-2">
                         <Check className="w-4 h-4" />
-                        Thank you! I'll get back to you soon.
+                        Obrigado! Retornarei em breve.
                       </p>
                     </motion.div>
                   )}
@@ -618,7 +618,7 @@ export default function ContactSection() {
                     >
                       <p className="text-center text-sm text-red-400 flex items-center justify-center gap-2">
                         <X className="w-4 h-4" />
-                        Please fix the errors above
+                        Por favor, corrija os erros acima
                       </p>
                     </motion.div>
                   )}

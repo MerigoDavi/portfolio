@@ -20,70 +20,70 @@ export default function ProjectsSection() {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      subtitle: 'Full-Stack Application',
-      description: 'Complete e-commerce platform with Next.js 14, Stripe payments, real-time inventory management, and advanced analytics dashboard. Features include AI-powered product recommendations and seamless checkout experience.',
-      tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL', 'Prisma', 'TailwindCSS'],
+      title: 'Sistema de Análise de Patologias com IA',
+      subtitle: 'Instituto de Pesquisas Tecnológicas (IPT)',
+      description: 'Desenvolvimento de aplicação desktop para automatizar identificação e classificação de fissuras em edificações usando IA. Construído em Rust e Python para alto desempenho offline, com sistema de geração automática de relatórios e galeria visual.',
+      tags: ['Rust', 'Python', 'IA', 'Visão Computacional', 'Desktop'],
       image: null,
-      github: 'https://github.com',
-      live: 'https://example.com',
+      github: 'https://github.com/MerigoDavi',
+      live: 'https://github.com/MerigoDavi',
       featured: true,
       color: 'from-blue-500 via-cyan-500 to-teal-500',
       stats: {
-        lines: '50K+',
-        time: '4 months',
-        impact: '10K users',
+        lines: '15K+',
+        time: '3 meses',
+        impact: 'IPT',
       },
     },
     {
       id: 2,
-      title: 'AI Chat Application',
-      subtitle: 'Real-Time Communication',
-      description: 'Modern chat interface powered by OpenAI GPT-4, featuring real-time message streaming, code syntax highlighting, conversation memory, and multi-modal support for images and documents.',
-      tags: ['React', 'OpenAI', 'WebSocket', 'Node.js', 'Redis', 'MongoDB'],
+      title: 'Hígia: Dispensação Farmacêutica Automatizada',
+      subtitle: 'Hospital das Clínicas da Unicamp',
+      description: 'Desenvolvimento de braço robótico para dispensação de medicamentos. Entreguei interface do usuário e sistemas de comunicação do robô, implementando algoritmos de visão computacional para reconhecimento de medicamentos.',
+      tags: ['React', 'IoT', 'Visão Computacional', 'Robótica', 'Python'],
       image: null,
-      github: 'https://github.com',
-      live: 'https://example.com',
-      featured: false,
+      github: 'https://github.com/MerigoDavi',
+      live: 'https://github.com/MerigoDavi',
+      featured: true,
       color: 'from-purple-500 via-pink-500 to-rose-500',
       stats: {
-        lines: '30K+',
-        time: '3 months',
-        impact: '5K users',
+        lines: '12K+',
+        time: '2 meses',
+        impact: 'HC Unicamp',
       },
     },
     {
       id: 3,
-      title: '3D Portfolio Experience',
-      subtitle: 'WebGL & Creative Coding',
-      description: 'Immersive 3D portfolio built with Three.js and React Three Fiber. Features custom shaders, physics-based animations, interactive 3D models, and optimized performance for all devices.',
-      tags: ['Three.js', 'R3F', 'GLSL', 'GSAP', 'WebGL', 'Blender'],
+      title: 'GPS: Sistema de Previsão de Gás',
+      subtitle: 'Startup Compass',
+      description: 'Criação de modelo preditivo robusto para detecção de vazamentos de gás e identificação de fraudes usando machine learning. Implementação de técnicas de ensemble learning resultando em 82% de precisão na detecção precoce de anomalias.',
+      tags: ['Python', 'Machine Learning', 'Ensemble', 'Data Science', 'Power BI'],
       image: null,
-      github: 'https://github.com',
-      live: 'https://example.com',
+      github: 'https://github.com/MerigoDavi',
+      live: 'https://github.com/MerigoDavi',
       featured: false,
       color: 'from-amber-500 via-orange-500 to-red-500',
       stats: {
-        lines: '25K+',
-        time: '2 months',
-        impact: 'Award',
+        lines: '8K+',
+        time: '4 meses',
+        impact: '82% precisão',
       },
     },
     {
       id: 4,
-      title: 'Analytics Dashboard',
-      subtitle: 'Data Visualization Platform',
-      description: 'Real-time analytics platform with interactive charts, custom data pipelines, automated reporting, and predictive analytics. Handles millions of data points with sub-second query times.',
-      tags: ['Next.js', 'D3.js', 'PostgreSQL', 'Redis', 'WebSocket', 'Python'],
+      title: 'Borbulha: Rede Social de Voluntários',
+      subtitle: 'ONG Parceiros Voluntários',
+      description: 'Desenvolvimento de aplicação web para facilitar interação entre voluntários, ONGs e empresas. Implementação completa de guia de estilos visual e desenvolvimento frontend com React e design responsivo de alta qualidade.',
+      tags: ['React', 'TypeScript', 'UI/UX', 'Figma', 'TailwindCSS'],
       image: null,
-      github: 'https://github.com',
-      live: 'https://example.com',
+      github: 'https://github.com/MerigoDavi',
+      live: 'https://github.com/MerigoDavi',
       featured: false,
       color: 'from-green-500 via-emerald-500 to-teal-500',
       stats: {
-        lines: '40K+',
-        time: '5 months',
-        impact: '100K+ queries/day',
+        lines: '10K+',
+        time: '2 meses',
+        impact: 'Social',
       },
     },
   ];
@@ -166,17 +166,17 @@ export default function ProjectsSection() {
             className="inline-block mb-4"
           >
             <span className="px-4 py-2 rounded-full glass text-sm font-semibold text-primary-300 border border-primary-500/20">
-              Featured Work
+              Trabalhos em Destaque
             </span>
           </motion.div>
           
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Selected <span className="text-gradient">Projects</span>
+            Projetos <span className="text-gradient">Selecionados</span>
           </h2>
           
           <p className="text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
-            A curated collection of projects showcasing technical excellence,
-            creative problem-solving, and attention to detail
+            Uma coleção selecionada de projetos demonstrando excelência técnica,
+            resolução criativa de problemas e atenção aos detalhes
           </p>
         </div>
 
@@ -255,7 +255,7 @@ export default function ProjectsSection() {
                     {/* Featured badge */}
                     {project.featured && (
                       <div className="absolute top-4 right-4 px-4 py-2 rounded-full glass-strong border border-accent-500/30 text-xs font-bold text-accent-300 uppercase tracking-wider">
-                        Featured
+                        Destaque
                       </div>
                     )}
                   </div>
@@ -296,15 +296,15 @@ export default function ProjectsSection() {
                     <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
                       <div>
                         <p className="text-2xl font-bold text-gradient">{project.stats.lines}</p>
-                        <p className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Lines of Code</p>
+                        <p className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Linhas de Código</p>
                       </div>
                       <div>
                         <p className="text-2xl font-bold text-gradient">{project.stats.time}</p>
-                        <p className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Development</p>
+                        <p className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Desenvolvimento</p>
                       </div>
                       <div>
                         <p className="text-2xl font-bold text-gradient">{project.stats.impact}</p>
-                        <p className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Impact</p>
+                        <p className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Impacto</p>
                       </div>
                     </div>
                   </div>
@@ -334,7 +334,7 @@ export default function ProjectsSection() {
             whileTap={{ scale: 0.95 }}
             data-magnetic
           >
-            <span>View All Projects</span>
+            <span>Ver Todos os Projetos</span>
             <ExternalLink className="w-5 h-5 group-hover:rotate-45 transition-transform" />
           </motion.a>
         </motion.div>

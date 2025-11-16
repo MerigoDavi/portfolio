@@ -24,47 +24,47 @@ export default function SkillsSection() {
 
   const skillCategories = [
     {
-      title: 'Frontend Development',
+      title: 'Desenvolvimento Frontend',
       color: 'from-blue-500 to-cyan-500',
       glowColor: 'rgba(59, 130, 246, 0.3)',
       skills: [
-        { name: 'React', level: 95, icon: SiReact },
-        { name: 'Next.js', level: 90, icon: SiNextdotjs },
+        { name: 'React', level: 90, icon: SiReact },
         { name: 'TypeScript', level: 88, icon: SiTypescript },
+        { name: 'Next.js', level: 85, icon: SiNextdotjs },
         { name: 'Tailwind CSS', level: 92, icon: SiTailwindcss },
       ],
     },
     {
-      title: 'Backend & Database',
+      title: 'Backend & Banco de Dados',
       color: 'from-green-500 to-emerald-500',
       glowColor: 'rgba(16, 185, 129, 0.3)',
       skills: [
         { name: 'Node.js', level: 85, icon: SiNodedotjs },
-        { name: 'PostgreSQL', level: 80, icon: SiPostgresql },
-        { name: 'GraphQL', level: 75, icon: SiGraphql },
+        { name: 'PostgreSQL', level: 82, icon: SiPostgresql },
         { name: 'REST APIs', level: 88, icon: TbApi },
+        { name: 'GraphQL', level: 70, icon: SiGraphql },
       ],
     },
     {
-      title: 'Animation & 3D',
+      title: 'IA & Data Science',
       color: 'from-purple-500 to-pink-500',
       glowColor: 'rgba(168, 85, 247, 0.3)',
       skills: [
-        { name: 'Framer Motion', level: 90, icon: SiFramer },
-        { name: 'GSAP', level: 85, icon: SiFramer },
-        { name: 'Three.js', level: 75, icon: TbBrandThreejs },
-        { name: 'React Three Fiber', level: 78, icon: TbBrandThreejs },
+        { name: 'Python', level: 92, icon: SiFramer },
+        { name: 'Machine Learning', level: 85, icon: SiFramer },
+        { name: 'Visão Computacional', level: 80, icon: TbBrandThreejs },
+        { name: 'Rust', level: 75, icon: TbBrandThreejs },
       ],
     },
     {
-      title: 'Tools & DevOps',
+      title: 'Ferramentas & Design',
       color: 'from-orange-500 to-red-500',
       glowColor: 'rgba(249, 115, 22, 0.3)',
       skills: [
         { name: 'Git', level: 92, icon: SiGit },
         { name: 'Figma', level: 88, icon: SiFigma },
         { name: 'Docker', level: 75, icon: SiDocker },
-        { name: 'Vercel', level: 90, icon: SiVercel },
+        { name: 'Power BI', level: 80, icon: SiVercel },
       ],
     },
   ];
@@ -198,16 +198,16 @@ export default function SkillsSection() {
             className="inline-block mb-6"
           >
             <span className="px-4 py-2 rounded-full glass text-sm font-semibold text-primary-300 border border-primary-500/20">
-              Technical Skills
+              Habilidades Técnicas
             </span>
           </motion.div>
           
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Tech Stack & <span className="text-gradient">Expertise</span>
+            Stack Tecnológica & <span className="text-gradient">Especialização</span>
           </h2>
           
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Modern technologies and tools I use to craft exceptional digital experiences
+            Tecnologias e ferramentas modernas que uso para criar experiências digitais excepcionais
           </p>
         </div>
 
@@ -360,10 +360,10 @@ export default function SkillsSection() {
           className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            { label: 'Technologies', value: '20+', color: 'from-blue-500 to-cyan-500' },
-            { label: 'Years Experience', value: '5+', color: 'from-green-500 to-emerald-500' },
-            { label: 'Projects Built', value: '100+', color: 'from-purple-500 to-pink-500' },
-            { label: 'Happy Clients', value: '50+', color: 'from-orange-500 to-red-500' },
+            { label: 'Tecnologias', value: '15+', color: 'from-blue-500 to-cyan-500' },
+            { label: 'Anos de Experiência', value: '2+', color: 'from-green-500 to-emerald-500' },
+            { label: 'Projetos Construídos', value: '5+', color: 'from-purple-500 to-pink-500' },
+            { label: 'Certificações', value: '4+', color: 'from-orange-500 to-red-500' },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

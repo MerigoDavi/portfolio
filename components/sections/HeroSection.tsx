@@ -78,7 +78,7 @@ export default function HeroSection() {
       >
         {/* Título principal */}
         <AnimatedText
-          text="Creative Developer"
+          text="Desenvolvedor Criativo"
           className="mb-6 text-5xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-300 via-accent-400 to-primary-300 md:text-7xl lg:text-8xl"
           animationType="blur"
           delay={0.3}
@@ -90,7 +90,7 @@ export default function HeroSection() {
           variants={itemVariants}
           className="mb-8 text-xl text-slate-300 md:text-2xl"
         >
-          Criando experiências web memoráveis com código e design
+          Estudante de Engenharia da Computação criando experiências web inovadoras
         </motion.p>
 
         {/* CTAs */}
@@ -133,9 +133,9 @@ export default function HeroSection() {
           className="flex items-center justify-center gap-6"
         >
           {[
-            { icon: Github, href: 'https://github.com', label: 'GitHub' },
-            { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-            { icon: Mail, href: 'mailto:contact@example.com', label: 'Email' },
+            { icon: Github, href: 'https://github.com/MerigoDavi', label: 'GitHub' },
+            { icon: Linkedin, href: 'https://www.linkedin.com/in/DaviOliveiraFerreira', label: 'LinkedIn' },
+            { icon: Mail, href: 'mailto:davi.ferreira@sou.inteli.edu.br', label: 'Email' },
           ].map(({ icon: Icon, href, label }) => (
             <motion.a
               key={label}

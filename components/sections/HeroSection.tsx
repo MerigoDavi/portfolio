@@ -1,42 +1,18 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { gsap } from '@/lib/gsap';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import AnimatedText from '@/components/AnimatedText';
+
+const HeroBackground3D = dynamic(() => import('@/components/HeroBackground3D'), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => {
-    if (!titleRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Split text animation
-      const text = titleRef.current!.textContent!;
-      const chars = text.split('');
-      titleRef.current!.innerHTML = '';
-      
-      chars.forEach((char, i) => {
-        const span = document.createElement('span');
-        span.textContent = char === ' ' ? '\u00A0' : char;
-        span.style.display = 'inline-block';
-        span.style.opacity = '0';
-        titleRef.current!.appendChild(span);
-        
-        gsap.to(span, {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          delay: 0.5 + i * 0.05,
-          ease: 'back.out(1.7)',
-        });
-      });
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -57,33 +33,38 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-slate-950"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"
     >
-      {/* Background gradient animado */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* 3D WebGL Background */}
+      <Suspense fallback={null}>
+        <HeroBackground3D />
+      </Suspense>
+      
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 overflow-hidden bg-gradient-to-b from-transparent via-slate-950/50 to-slate-950/80">
         <motion.div
-          className="absolute -left-1/4 -top-1/4 h-96 w-96 rounded-full bg-primary-500/30 blur-[100px]"
+          className="absolute -left-1/4 -top-1/4 h-96 w-96 rounded-full bg-primary-500/20 blur-[120px]"
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
-            duration: 8,
+            duration: 10,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
         />
         <motion.div
-          className="absolute -bottom-1/4 -right-1/4 h-96 w-96 rounded-full bg-accent-500/30 blur-[100px]"
+          className="absolute -bottom-1/4 -right-1/4 h-96 w-96 rounded-full bg-accent-500/20 blur-[120px]"
           animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.5, 0.3, 0.5],
+            scale: [1.3, 1, 1.3],
+            opacity: [0.4, 0.2, 0.4],
           }}
           transition={{
-            duration: 8,
+            duration: 10,
             repeat: Infinity,
             ease: 'easeInOut',
-            delay: 1,
+            delay: 1.5,
           }}
         />
       </div>
@@ -96,12 +77,13 @@ export default function HeroSection() {
         animate="visible"
       >
         {/* Título principal */}
-        <h1
-          ref={titleRef}
-          className="mb-6 text-5xl font-bold leading-tight text-white md:text-7xl lg:text-8xl"
-        >
-          Creative Developer
-        </h1>
+        <AnimatedText
+          text="Creative Developer"
+          className="mb-6 text-5xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-300 via-accent-400 to-primary-300 md:text-7xl lg:text-8xl"
+          animationType="blur"
+          delay={0.3}
+          staggerDelay={0.04}
+        />
 
         {/* Subtítulo */}
         <motion.p
@@ -118,7 +100,9 @@ export default function HeroSection() {
         >
           <motion.a
             href="#projects"
-            className="group relative overflow-hidden rounded-full bg-gradient-to-r from-primary-500 to-accent-500 px-8 py-4 font-semibold text-white transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.6)]"
+            data-magnetic
+            data-cursor-text="View"
+            className="group relative overflow-hidden rounded-full bg-gradient-to-r from-primary-500 to-accent-500 px-8 py-4 font-semibold text-white shadow-lg shadow-primary-500/50 transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(99,102,241,0.8)]"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -133,7 +117,9 @@ export default function HeroSection() {
 
           <motion.a
             href="#contact"
-            className="rounded-full border-2 border-primary-500 px-8 py-4 font-semibold text-primary-300 transition-all hover:bg-primary-500/10"
+            data-magnetic
+            data-cursor-text="Contact"
+            className="rounded-full border-2 border-primary-500 bg-primary-500/10 px-8 py-4 font-semibold text-primary-300 backdrop-blur-sm transition-all hover:bg-primary-500/20 hover:text-primary-200"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

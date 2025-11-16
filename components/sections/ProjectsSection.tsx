@@ -2,8 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
-import Image from 'next/image';
+import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -13,46 +12,46 @@ export default function ProjectsSection() {
     {
       id: 1,
       title: 'E-Commerce Platform',
-      description: 'Plataforma completa de e-commerce com Next.js, Stripe e dashboard admin',
-      tags: ['Next.js', 'TypeScript', 'Stripe', 'Tailwind'],
-      image: '/projects/project1.jpg',
+      description: 'Plataforma completa de e-commerce com Next.js, processamento de pagamentos via Stripe e dashboard admin com analytics em tempo real.',
+      tags: ['Next.js', 'TypeScript', 'Stripe', 'Tailwind CSS', 'PostgreSQL'],
+      image: null,
       github: 'https://github.com',
       live: 'https://example.com',
       featured: true,
-      span: 'lg:col-span-2 lg:row-span-2',
+      color: 'from-blue-500 to-cyan-500',
     },
     {
       id: 2,
       title: 'AI Chat Application',
-      description: 'Interface de chat com IA usando OpenAI API',
-      tags: ['React', 'OpenAI', 'WebSocket'],
-      image: '/projects/project2.jpg',
+      description: 'Interface moderna de chat com IA integrada usando OpenAI API e comunicação em tempo real via WebSocket.',
+      tags: ['React', 'OpenAI', 'WebSocket', 'Node.js'],
+      image: null,
       github: 'https://github.com',
       live: 'https://example.com',
       featured: false,
-      span: 'lg:col-span-1 lg:row-span-1',
+      color: 'from-purple-500 to-pink-500',
     },
     {
       id: 3,
-      title: 'Portfolio 3D',
-      description: 'Portfolio interativo com Three.js e animações WebGL',
-      tags: ['Three.js', 'React Three Fiber', 'GSAP'],
-      image: '/projects/project3.jpg',
+      title: 'Interactive 3D Portfolio',
+      description: 'Portfolio interativo com Three.js, animações WebGL e experiência 3D imersiva.',
+      tags: ['Three.js', 'React Three Fiber', 'GSAP', 'WebGL'],
+      image: null,
       github: 'https://github.com',
       live: 'https://example.com',
       featured: false,
-      span: 'lg:col-span-1 lg:row-span-1',
+      color: 'from-amber-500 to-orange-500',
     },
     {
       id: 4,
-      title: 'Dashboard Analytics',
-      description: 'Dashboard de analytics em tempo real com gráficos interativos',
-      tags: ['Next.js', 'Chart.js', 'PostgreSQL'],
-      image: '/projects/project4.jpg',
+      title: 'Analytics Dashboard',
+      description: 'Dashboard de analytics em tempo real com visualizações interativas de dados e gráficos dinâmicos.',
+      tags: ['Next.js', 'Chart.js', 'PostgreSQL', 'Redis'],
+      image: null,
       github: 'https://github.com',
       live: 'https://example.com',
       featured: false,
-      span: 'lg:col-span-2 lg:row-span-1',
+      color: 'from-green-500 to-emerald-500',
     },
   ];
 
@@ -94,104 +93,94 @@ export default function ProjectsSection() {
           </p>
         </motion.div>
 
-        {/* Bento Grid */}
+        {/* Projects Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid gap-6 lg:grid-cols-3 lg:grid-rows-3"
+          className="grid gap-8 md:grid-cols-2"
         >
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
-              className={`group relative overflow-hidden rounded-3xl bg-slate-800 ${project.span}`}
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ y: -10 }}
+              className={`group relative ${project.featured ? 'md:col-span-2' : ''}`}
             >
-              {/* Background image placeholder */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20" />
-              
-              {/* Overlay com informações */}
-              <div className="relative flex h-full min-h-[300px] flex-col justify-between p-6 lg:p-8">
-                {/* Badge de featured */}
-                {project.featured && (
+              <div className="relative overflow-hidden rounded-3xl bg-slate-800/50 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all h-full">
+                {/* Gradient Container */}
+                <div className="relative h-64 md:h-80 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent z-10" />
                   <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.5, type: 'spring' }}
-                    className="absolute right-6 top-6 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 px-4 py-1 text-sm font-semibold text-white"
-                  >
-                    Destaque
-                  </motion.div>
-                )}
-
-                {/* Conteúdo */}
-                <div className="relative z-10 mt-auto">
-                  <h3 className="mb-3 text-2xl font-bold text-white lg:text-3xl">
-                    {project.title}
-                  </h3>
-                  <p className="mb-4 text-slate-300">{project.description}</p>
-
-                  {/* Tags */}
-                  <div className="mb-6 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-slate-700/50 px-3 py-1 text-xs text-slate-300 backdrop-blur-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Links */}
-                  <div className="flex gap-4">
+                    className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-40`}
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      rotate: [0, 5, 0],
+                    }}
+                    transition={{
+                      duration: 10,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
+                  
+                  {/* Overlay Links */}
+                  <div className="absolute inset-0 z-20 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-primary-400"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all"
+                      aria-label="View on GitHub"
                     >
-                      <Github className="h-4 w-4" />
-                      <span>Código</span>
+                      <Github className="w-6 h-6" />
                     </motion.a>
                     <motion.a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-primary-400"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all"
+                      aria-label="View Live Site"
                     >
-                      <ExternalLink className="h-4 w-4" />
-                      <span>Demo</span>
+                      <ExternalLink className="w-6 h-6" />
                     </motion.a>
                   </div>
                 </div>
 
-                {/* Hover effect overlay */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-primary-500/0 to-accent-500/0 opacity-0 transition-opacity group-hover:from-primary-500/10 group-hover:to-accent-500/10 group-hover:opacity-100"
-                  initial={false}
-                />
-              </div>
+                {/* Content */}
+                <div className="p-8">
+                  <div className="flex items-start justify-between mb-4">
+                    <h3 className="text-2xl font-bold text-white group-hover:text-gradient transition-all">
+                      {project.title}
+                    </h3>
+                    <ArrowUpRight className="w-6 h-6 text-slate-400 group-hover:text-primary-400 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  </div>
 
-              {/* Border gradient animado */}
-              <motion.div
-                className="absolute inset-0 rounded-3xl opacity-0 transition-opacity group-hover:opacity-100"
-                style={{
-                  background:
-                    'linear-gradient(135deg, rgba(99, 102, 241, 0.5), rgba(168, 85, 247, 0.5))',
-                  padding: '2px',
-                  WebkitMask:
-                    'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                  WebkitMaskComposite: 'xor',
-                  maskComposite: 'exclude',
-                }}
-              />
+                  <p className="text-slate-400 mb-6 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="px-3 py-1.5 text-xs font-medium rounded-full bg-white/5 border border-white/10 text-slate-300 hover:border-primary-500/50 hover:bg-primary-500/10 transition-all"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Gradient Border Effect */}
+                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-20 blur-xl -z-10 transition-opacity duration-500`} />
+              </div>
             </motion.div>
           ))}
         </motion.div>

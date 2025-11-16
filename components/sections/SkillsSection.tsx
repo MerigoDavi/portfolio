@@ -2,6 +2,12 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { 
+  SiReact, SiNextdotjs, SiTypescript, SiTailwindcss,
+  SiNodedotjs, SiPostgresql, SiGraphql, SiDocker,
+  SiGit, SiFigma, SiVercel, SiFramer
+} from 'react-icons/si';
+import { TbApi, TbBrandThreejs } from 'react-icons/tb';
 
 export default function SkillsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -9,39 +15,43 @@ export default function SkillsSection() {
 
   const skillCategories = [
     {
-      title: 'Frontend',
+      title: 'Frontend Development',
+      color: 'from-blue-500 to-cyan-500',
       skills: [
-        { name: 'React', level: 95 },
-        { name: 'Next.js', level: 90 },
-        { name: 'TypeScript', level: 88 },
-        { name: 'Tailwind CSS', level: 92 },
+        { name: 'React', level: 95, icon: SiReact },
+        { name: 'Next.js', level: 90, icon: SiNextdotjs },
+        { name: 'TypeScript', level: 88, icon: SiTypescript },
+        { name: 'Tailwind CSS', level: 92, icon: SiTailwindcss },
       ],
     },
     {
-      title: 'Backend',
+      title: 'Backend & Database',
+      color: 'from-green-500 to-emerald-500',
       skills: [
-        { name: 'Node.js', level: 85 },
-        { name: 'PostgreSQL', level: 80 },
-        { name: 'GraphQL', level: 75 },
-        { name: 'REST APIs', level: 88 },
+        { name: 'Node.js', level: 85, icon: SiNodedotjs },
+        { name: 'PostgreSQL', level: 80, icon: SiPostgresql },
+        { name: 'GraphQL', level: 75, icon: SiGraphql },
+        { name: 'REST APIs', level: 88, icon: TbApi },
       ],
     },
     {
-      title: 'Animação & 3D',
+      title: 'Animation & 3D',
+      color: 'from-purple-500 to-pink-500',
       skills: [
-        { name: 'Framer Motion', level: 90 },
-        { name: 'GSAP', level: 85 },
-        { name: 'Three.js', level: 75 },
-        { name: 'React Three Fiber', level: 78 },
+        { name: 'Framer Motion', level: 90, icon: SiFramer },
+        { name: 'GSAP', level: 85, icon: SiFramer },
+        { name: 'Three.js', level: 75, icon: TbBrandThreejs },
+        { name: 'React Three Fiber', level: 78, icon: TbBrandThreejs },
       ],
     },
     {
-      title: 'Ferramentas',
+      title: 'Tools & DevOps',
+      color: 'from-orange-500 to-red-500',
       skills: [
-        { name: 'Git', level: 92 },
-        { name: 'Figma', level: 88 },
-        { name: 'Docker', level: 75 },
-        { name: 'Vercel', level: 90 },
+        { name: 'Git', level: 92, icon: SiGit },
+        { name: 'Figma', level: 88, icon: SiFigma },
+        { name: 'Docker', level: 75, icon: SiDocker },
+        { name: 'Vercel', level: 90, icon: SiVercel },
       ],
     },
   ];
@@ -94,73 +104,79 @@ export default function SkillsSection() {
             <motion.div
               key={category.title}
               variants={categoryVariants}
-              className="glass rounded-3xl p-8"
+              whileHover={{ scale: 1.02 }}
+              className="group relative"
             >
-              <h3 className="mb-6 text-2xl font-bold text-white">
-                {category.title}
-              </h3>
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-white/20 transition-all">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className={`h-1.5 w-12 bg-gradient-to-r ${category.color} rounded-full`} />
+                  <h3 className="text-2xl font-bold text-white">
+                    {category.title}
+                  </h3>
+                </div>
 
-              <div className="space-y-6">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skill.name} className="group">
-                    {/* Nome e percentual */}
-                    <div className="mb-2 flex items-center justify-between">
-                      <span className="font-medium text-slate-300">
-                        {skill.name}
-                      </span>
-                      <motion.span
-                        className="text-sm text-primary-400"
-                        initial={{ opacity: 0 }}
-                        animate={
-                          isInView
-                            ? { opacity: 1 }
-                            : { opacity: 0 }
-                        }
-                        transition={{
-                          delay: categoryIndex * 0.15 + skillIndex * 0.1 + 0.5,
-                        }}
-                      >
-                        {skill.level}%
-                      </motion.span>
-                    </div>
+                <div className="space-y-6">
+                  {category.skills.map((skill, skillIndex) => {
+                    const Icon = skill.icon;
+                    return (
+                      <div key={skill.name} className="group/skill">
+                        {/* Nome e percentual */}
+                        <div className="mb-3 flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className={`p-2 rounded-lg bg-gradient-to-br ${category.color} shadow-lg`}>
+                              <Icon className="w-4 h-4 text-white" />
+                            </div>
+                            <span className="font-medium text-slate-200">
+                              {skill.name}
+                            </span>
+                          </div>
+                          <motion.span
+                            className="text-sm font-semibold text-primary-400"
+                            initial={{ opacity: 0 }}
+                            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                            transition={{
+                              delay: categoryIndex * 0.15 + skillIndex * 0.1 + 0.5,
+                            }}
+                          >
+                            {skill.level}%
+                          </motion.span>
+                        </div>
 
-                    {/* Barra de progresso */}
-                    <div className="relative h-2 overflow-hidden rounded-full bg-slate-800">
-                      <motion.div
-                        className="h-full rounded-full bg-gradient-to-r from-primary-500 to-accent-500"
-                        initial={{ width: 0 }}
-                        animate={
-                          isInView
-                            ? { width: `${skill.level}%` }
-                            : { width: 0 }
-                        }
-                        transition={{
-                          duration: 1,
-                          delay: categoryIndex * 0.15 + skillIndex * 0.1,
-                        }}
-                      />
+                        {/* Barra de progresso */}
+                        <div className="relative h-3 overflow-hidden rounded-full bg-slate-800/50">
+                          <motion.div
+                            className={`h-full rounded-full bg-gradient-to-r ${category.color} shadow-lg`}
+                            initial={{ width: 0 }}
+                            animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
+                            transition={{
+                              duration: 1.2,
+                              delay: categoryIndex * 0.15 + skillIndex * 0.1,
+                              ease: [0.22, 1, 0.36, 1],
+                            }}
+                          />
 
-                      {/* Efeito de brilho na barra */}
-                      <motion.div
-                        className="absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                        initial={{ x: '-100%' }}
-                        animate={
-                          isInView
-                            ? {
-                                x: ['0%', '400%'],
-                              }
-                            : {}
-                        }
-                        transition={{
-                          duration: 1.5,
-                          delay: categoryIndex * 0.15 + skillIndex * 0.1 + 0.3,
-                          ease: 'easeInOut',
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
+                          {/* Efeito de brilho na barra */}
+                          <motion.div
+                            className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                            initial={{ x: '-100%' }}
+                            animate={isInView ? { x: ['0%', '500%'] } : {}}
+                            transition={{
+                              duration: 1.5,
+                              delay: categoryIndex * 0.15 + skillIndex * 0.1 + 0.3,
+                              ease: 'easeInOut',
+                            }}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
+
+              {/* Glow Effect on Hover */}
+              <motion.div
+                className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${category.color} opacity-0 blur-xl -z-10 group-hover:opacity-20 transition-opacity duration-500`}
+              />
             </motion.div>
           ))}
         </motion.div>

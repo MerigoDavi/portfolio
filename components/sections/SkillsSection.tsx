@@ -63,8 +63,8 @@ export default function SkillsSection() {
       skills: [
         { name: 'Git', level: 92, icon: SiGit },
         { name: 'Figma', level: 88, icon: SiFigma },
-        { name: 'Docker', level: 75, icon: SiDocker },
-        { name: 'Power BI', level: 80, icon: SiVercel },
+        { name: 'Docker', level: 50, icon: SiDocker },
+        { name: 'Power BI', level: 35, icon: SiVercel },
       ],
     },
   ];

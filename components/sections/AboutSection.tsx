@@ -28,7 +28,7 @@ export default function AboutSection() {
       color: 'from-purple-500 to-pink-500',
     },
     {
-      year: '2023',
+      year: '2024',
       icon: GraduationCap,
       title: 'Educators Tech Track',
       company: 'Oracle Academy / Inteli',
@@ -37,7 +37,7 @@ export default function AboutSection() {
       color: 'from-green-500 to-emerald-500',
     },
     {
-      year: '2023',
+      year: '2024',
       icon: Code2,
       title: 'Rede Social para Voluntários',
       company: 'ONG Parceiros Voluntários / Inteli',
@@ -73,7 +73,7 @@ export default function AboutSection() {
       color: 'from-violet-500 to-purple-500',
     },
     {
-      year: '2024',
+      year: '2025',
       icon: Zap,
       title: 'Sistema Automatizado de Farmácos',
       company: 'HC Unicamp / Inteli',
@@ -82,7 +82,7 @@ export default function AboutSection() {
       color: 'from-rose-500 to-red-500',
     },
     {
-      year: '2024',
+      year: '2025',
       icon: Award,
       title: 'Análise de Patologias Estruturais com IA',
       company: 'IPT / Inteli',

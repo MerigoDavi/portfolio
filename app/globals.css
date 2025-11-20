@@ -306,6 +306,22 @@
     backface-visibility: hidden;
     perspective: 1000px;
   }
+
+  /* Smooth animations for all elements */
+  * {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Hide scrollbar on magnetic elements during animation */
+  [data-magnetic] {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Enhance glassmorphism with better backdrop filter */
+  .glass,
+  .glass-strong {
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+  }
   
   /* Smooth Scrollbar Styling */
   ::-webkit-scrollbar {

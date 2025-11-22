@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import MagneticCursor from "@/components/effects/MagneticCursor";
+// import MagneticCursor from "@/components/effects/MagneticCursor";
 import Navigation from "@/components/Navigation";
 
 // Premium Variable Fonts for Award-Winning Typography
@@ -124,11 +124,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="antialiased">
-        <SmoothScroll>
+        {/* <SmoothScroll> */}
           <Navigation />
-          <MagneticCursor />
+          {/* <MagneticCursor /> */}
           {children}
-        </SmoothScroll>
+        {/* </SmoothScroll> */}
       </body>
     </html>
   );

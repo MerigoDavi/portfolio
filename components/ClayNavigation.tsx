@@ -9,13 +9,6 @@ import { HiMail } from 'react-icons/hi';
 export default function ClayNavigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollY } = useScroll();
-  
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 100],
-    ['rgba(255, 248, 231, 0)', 'rgba(255, 248, 231, 0.95)']
-  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,18 +34,20 @@ export default function ClayNavigation() {
 
   return (
     <>
-      <motion.header
-        style={{ backgroundColor }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      <header
+        style={{
+          backgroundColor: isScrolled ? 'rgba(255, 248, 231, 0.95)' : 'rgba(255, 248, 231, 0)',
+        }}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 will-change-transform ${
           isScrolled ? 'py-3 backdrop-blur-xl' : 'py-6'
         }`}
       >
-        <nav className="container mx-auto px-6 md:px-12 max-w-7xl">
+        <nav className="container mx-auto px-6 md:px-12 max-w-7xl relative isolate">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <motion.a
               href="#home"
-              className="relative z-50"
+              className="relative z-50 cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -85,7 +80,7 @@ export default function ClayNavigation() {
                     type: 'spring',
                     stiffness: 200,
                   }}
-                  className="relative px-5 py-2.5 text-[#6B5B4F] font-semibold rounded-[20px] transition-all"
+                  className="relative px-5 py-2.5 text-[#6B5B4F] font-semibold rounded-[20px] transition-all cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -96,7 +91,7 @@ export default function ClayNavigation() {
                     {item.label}
                   </motion.span>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-[#FFF1D0] to-[#FFE9B8] rounded-[20px] opacity-0"
+                    className="absolute inset-0 bg-gradient-to-br from-[#FFF1D0] to-[#FFE9B8] rounded-[20px] opacity-0 pointer-events-none"
                     style={{
                       boxShadow: '6px 6px 12px rgba(255,233,184,0.3), -4px -4px 10px rgba(255,255,255,0.9)',
                     }}
@@ -115,7 +110,7 @@ export default function ClayNavigation() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 bg-gradient-to-br from-[#C8E6F5] to-[#A7D8EA] rounded-full flex items-center justify-center text-[#6B5B4F]"
+                  className="w-11 h-11 bg-gradient-to-br from-[#C8E6F5] to-[#A7D8EA] rounded-full flex items-center justify-center text-[#6B5B4F] cursor-pointer"
                   style={{
                     boxShadow: '6px 6px 12px rgba(126,200,227,0.3), -4px -4px 10px rgba(255,255,255,0.9)',
                   }}
@@ -139,7 +134,7 @@ export default function ClayNavigation() {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden relative z-50 w-12 h-12 bg-gradient-to-br from-[#FFD4B8] to-[#FFC09D] rounded-full flex items-center justify-center text-[#6B5B4F]"
+              className="md:hidden relative z-50 w-12 h-12 bg-gradient-to-br from-[#FFD4B8] to-[#FFC09D] rounded-full flex items-center justify-center text-[#6B5B4F] cursor-pointer"
               style={{
                 boxShadow: '6px 6px 12px rgba(255,162,110,0.3), -4px -4px 10px rgba(255,255,255,0.9)',
               }}
@@ -153,7 +148,7 @@ export default function ClayNavigation() {
             </motion.button>
           </div>
         </nav>
-      </motion.header>
+      </header>
 
       {/* Mobile Menu */}
       <motion.div
@@ -167,7 +162,7 @@ export default function ClayNavigation() {
           stiffness: 300,
           damping: 30,
         }}
-        className="fixed inset-0 z-40 md:hidden bg-gradient-to-br from-[#FFF8E7] to-[#E0F2FE]"
+        className="fixed inset-0 z-[90] md:hidden bg-gradient-to-br from-[#FFF8E7] to-[#E0F2FE]"
         style={{ pointerEvents: isMenuOpen ? 'auto' : 'none' }}
       >
         <div className="flex flex-col items-center justify-center min-h-screen gap-6 p-8">

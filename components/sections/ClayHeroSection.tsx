@@ -277,7 +277,7 @@ export default function ClayHeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.4, duration: 0.8 }}
-            className="absolute bottom-12 left-1/2 -translate-x-1/2"
+            className="mt-16 md:mt-20"
           >
             <motion.div
               animate={{ y: [0, 15, 0] }}

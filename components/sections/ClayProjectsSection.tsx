@@ -194,7 +194,7 @@ export default function ClayProjectsSection() {
           }}
           className="flex justify-center mt-20"
         >
-          <ClayButton variant="mint" size="lg" href="https://github.com">
+          <ClayButton variant="mint" size="lg" href="/projects">
             <span className="flex items-center gap-3">
               <span>View All Projects</span>
               <motion.span

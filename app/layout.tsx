@@ -3,7 +3,7 @@ import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 // import MagneticCursor from "@/components/effects/MagneticCursor";
-import Navigation from "@/components/Navigation";
+// import Navigation from "@/components/Navigation";
 
 // Premium Variable Fonts for Award-Winning Typography
 const inter = Inter({
@@ -125,7 +125,7 @@ export default function RootLayout({
     >
       <body className="antialiased">
         {/* <SmoothScroll> */}
-          <Navigation />
+          {/* <Navigation /> */}
           {/* <MagneticCursor /> */}
           {children}
         {/* </SmoothScroll> */}

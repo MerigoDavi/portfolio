@@ -3,13 +3,14 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { useStore } from '@/lib/store/useStore';
 import LoadingScreen from '@/components/LoadingScreen';
-import NewHeroSection from '@/components/sections/NewHeroSection';
+import ClayNavigation from '@/components/ClayNavigation';
+import ClayHeroSection from '@/components/sections/ClayHeroSection';
 
 // Lazy load sections for better performance
-const AboutSection = lazy(() => import('@/components/sections/AboutSection'));
-const SkillsSection = lazy(() => import('@/components/sections/SkillsSection'));
-const ProjectsSection = lazy(() => import('@/components/sections/ProjectsSection'));
-const ContactSection = lazy(() => import('@/components/sections/ContactSection'));
+const ClayProjectsSection = lazy(() => import('@/components/sections/ClayProjectsSection'));
+const ClayAboutSection = lazy(() => import('@/components/sections/ClayAboutSection'));
+const ClaySkillsSection = lazy(() => import('@/components/sections/ClaySkillsSection'));
+const ClayContactSection = lazy(() => import('@/components/sections/ClayContactSection'));
 const Footer = lazy(() => import('@/components/Footer'));
 
 // Section loading fallback
@@ -46,19 +47,20 @@ export default function Home() {
   return (
     <>
       {isLoading && <LoadingScreen />}
+      <ClayNavigation />
       <main id="main-content" className="relative overflow-hidden">
-        <NewHeroSection />
+        <ClayHeroSection />
         <Suspense fallback={<SectionFallback />}>
-          <AboutSection />
+          <ClayProjectsSection />
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
-          <SkillsSection />
+          <ClayAboutSection />
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
-          <ProjectsSection />
+          <ClaySkillsSection />
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
-          <ContactSection />
+          <ClayContactSection />
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
           <Footer />

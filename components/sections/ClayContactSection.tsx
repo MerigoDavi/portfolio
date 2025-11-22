@@ -13,15 +13,41 @@ export default function ClayContactSection() {
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 3000);
+    setIsLoading(true);
+    setError('');
+    
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send email');
+      }
+
+      // Show success message
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: '', email: '', message: '' });
+      }, 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to send message. Please try again.');
+      console.error('Error sending email:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -231,11 +257,35 @@ export default function ClayContactSection() {
                     />
                   </div>
 
+                  {/* Error Message */}
+                  {error && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 bg-red-100 border border-red-300 rounded-[20px] text-red-700 text-sm font-semibold"
+                    >
+                      {error}
+                    </motion.div>
+                  )}
+
                   {/* Submit Button */}
-                  <ClayButton variant="mint" size="lg" className="w-full">
+                  <ClayButton 
+                    variant="mint" 
+                    size="lg" 
+                    className="w-full"
+                    disabled={isLoading}
+                  >
                     <span className="flex items-center justify-center gap-3">
-                      <span>Send Message</span>
-                      <Send className="w-5 h-5" />
+                      <span>{isLoading ? 'Sending...' : 'Send Message'}</span>
+                      {isLoading ? (
+                        <motion.div
+                          className="w-5 h-5 border-2 border-[#6B5B4F] border-t-transparent rounded-full"
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                        />
+                      ) : (
+                        <Send className="w-5 h-5" />
+                      )}
                     </span>
                   </ClayButton>
                 </form>

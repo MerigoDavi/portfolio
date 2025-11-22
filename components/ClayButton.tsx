@@ -10,6 +10,7 @@ interface ClayButtonProps {
   variant?: 'peach' | 'blue' | 'lavender' | 'mint';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
+  disabled?: boolean;
 }
 
 export default function ClayButton({
@@ -19,6 +20,7 @@ export default function ClayButton({
   variant = 'lavender',
   size = 'md',
   className = '',
+  disabled = false,
 }: ClayButtonProps) {
   const variantStyles = {
     peach: 'bg-gradient-to-br from-[#FFD4B8] to-[#FFC09D] shadow-[8px_8px_16px_rgba(255,162,110,0.3),-6px_-6px_14px_rgba(255,255,255,0.9)]',
@@ -45,19 +47,21 @@ export default function ClayButton({
   return (
     <Component
       href={href}
-      onClick={onClick}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
       className={`
         relative font-bold text-[#6B5B4F]
         ${variantStyles[variant]}
         ${sizeStyles[size]}
+        ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
         ${className}
       `}
-      whileHover={{
+      whileHover={disabled ? {} : {
         y: -6,
         scale: 1.02,
         boxShadow: hoverShadows[variant],
       }}
-      whileTap={{
+      whileTap={disabled ? {} : {
         y: 2,
         scale: 0.98,
       }}

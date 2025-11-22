@@ -5,7 +5,11 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiMail, HiHeart } from 'react-icons/hi';
 import { ArrowUp } from 'lucide-react';
 
-export default function Footer() {
+interface FooterProps {
+  isProjectsPage?: boolean;
+}
+
+export default function Footer({ isProjectsPage = false }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -15,11 +19,11 @@ export default function Footer() {
   ];
 
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: isProjectsPage ? '/#home' : '#home' },
+    { name: 'About', href: isProjectsPage ? '/#about' : '#about' },
+    { name: 'Skills', href: isProjectsPage ? '/#skills' : '#skills' },
+    { name: 'Projects', href: isProjectsPage ? '#projects-top' : '#projects' },
+    { name: 'Contact', href: isProjectsPage ? '/#contact' : '#contact' },
   ];
 
   const scrollToTop = () => {

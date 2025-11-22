@@ -333,15 +333,15 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <>
-      <ClayNavigation />
+      <ClayNavigation isProjectsPage={true} />
       
-      <main className="min-h-screen bg-gradient-to-br from-[#FFF8E7] via-[#FFE8D8] to-[#E0F2FE]">
-        {/* Fixed Back Button - Top Left */}
+      <main className="min-h-screen bg-gradient-to-br from-[#FFF8E7] via-[#FFE8D8] to-[#E0F2FE]" id="projects-top">
+        {/* Fixed Back Button - Top Left in Header */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="fixed top-24 left-6 md:left-12 z-50"
+          className="fixed top-5 left-5 md:left-12 z-[110]"
         >
           <Link href="/">
             <ClayButton variant="lavender" size="sm">
@@ -393,7 +393,7 @@ export default function ProjectsPage() {
         </section>
       </main>
 
-      <Footer />
+      <Footer isProjectsPage={true} />
     </>
   );
 }
@@ -427,7 +427,7 @@ function ProjectBentoBox({ project, index }: { project: typeof projects[0]; inde
         className="mb-6"
       >
         <div className="inline-flex items-center gap-3">
-          <span className="text-6xl md:text-7xl font-black bg-gradient-to-r from-[#6B5B4F]/20 to-transparent bg-clip-text text-transparent">
+          <span className="text-6xl md:text-7xl font-black bg-gradient-to-r from-[#6B5B4F]/60 to-[#6B5B4F]/20 bg-clip-text text-transparent">
             0{index + 1}
           </span>
           <span

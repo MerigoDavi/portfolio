@@ -6,7 +6,11 @@ import { Menu, X } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
 
-export default function ClayNavigation() {
+interface ClayNavigationProps {
+  isProjectsPage?: boolean;
+}
+
+export default function ClayNavigation({ isProjectsPage = false }: ClayNavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -19,11 +23,11 @@ export default function ClayNavigation() {
   }, []);
 
   const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: isProjectsPage ? '/#home' : '#home' },
+    { label: 'Projects', href: isProjectsPage ? '#projects-top' : '#projects' },
+    { label: 'About', href: isProjectsPage ? '/#about' : '#about' },
+    { label: 'Skills', href: isProjectsPage ? '/#skills' : '#skills' },
+    { label: 'Contact', href: isProjectsPage ? '/#contact' : '#contact' },
   ];
 
   const socialLinks = [

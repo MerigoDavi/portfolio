@@ -34,9 +34,9 @@ export default function ClayNavigation() {
   ];
 
   const socialLinks = [
-    { Icon: FaGithub, href: 'https://github.com', label: 'GitHub' },
-    { Icon: FaLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { Icon: HiMail, href: 'mailto:contact@example.com', label: 'Email' },
+    { Icon: FaGithub, href: 'https://github.com/MerigoDavi', label: 'GitHub' },
+    { Icon: FaLinkedin, href: 'https://www.linkedin.com/in/davioliveiraferreira/', label: 'LinkedIn' },
+    { Icon: HiMail, href: 'mailto:merigodavi.dev@gmail.com', label: 'Email' },
   ];
 
   return (

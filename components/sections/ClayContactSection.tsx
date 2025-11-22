@@ -28,8 +28,8 @@ export default function ClayContactSection() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'hello@example.com',
-      href: 'mailto:hello@example.com',
+      value: 'merigodavi.dev@gmail.com',
+      href: 'mailto:merigodavi.dev@gmail.com',
     },
     {
       icon: Phone,
@@ -46,8 +46,8 @@ export default function ClayContactSection() {
   ];
 
   const socialLinks = [
-    { icon: FaGithub, href: 'https://github.com', label: 'GitHub', color: 'from-[#FFD4B8] to-[#FFC09D]' },
-    { icon: FaLinkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: 'from-[#C8E6F5] to-[#A7D8EA]' },
+    { icon: FaGithub, href: 'https://github.com/MerigoDavi', label: 'GitHub', color: 'from-[#FFD4B8] to-[#FFC09D]' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/davioliveiraferreira/', label: 'LinkedIn', color: 'from-[#C8E6F5] to-[#A7D8EA]' },
     { icon: FaTwitter, href: 'https://twitter.com', label: 'Twitter', color: 'from-[#E5D4FF] to-[#D5BFFF]' },
   ];
 

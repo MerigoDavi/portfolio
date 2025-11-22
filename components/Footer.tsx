@@ -9,9 +9,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: FaGithub, href: 'https://github.com', label: 'GitHub' },
-    { icon: FaLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: HiMail, href: 'mailto:contact@example.com', label: 'Email' },
+    { icon: FaGithub, href: 'https://github.com/MerigoDavi', label: 'GitHub' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/davioliveiraferreira/', label: 'LinkedIn' },
+    { icon: HiMail, href: 'mailto:merigodavi.dev@gmail.com', label: 'Email' },
   ];
 
   const quickLinks = [
@@ -113,7 +113,7 @@ export default function Footer() {
               ))}
             </div>
             <p className="text-sm text-[#8B7B6F] mt-6 font-medium">
-              contact@example.com<br />
+              merigodavi.dev@gmail.com<br />
               São Paulo, Brasil
             </p>
           </motion.div>

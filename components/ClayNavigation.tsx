@@ -23,11 +23,11 @@ export default function ClayNavigation({ isProjectsPage = false }: ClayNavigatio
   }, []);
 
   const navItems = [
-    { label: 'Home', href: isProjectsPage ? '/#home' : '#home' },
-    { label: 'Projects', href: isProjectsPage ? '#projects-top' : '#projects' },
-    { label: 'About', href: isProjectsPage ? '/#about' : '#about' },
-    { label: 'Skills', href: isProjectsPage ? '/#skills' : '#skills' },
-    { label: 'Contact', href: isProjectsPage ? '/#contact' : '#contact' },
+    { label: 'Início', href: isProjectsPage ? '/#home' : '#home' },
+    { label: 'Projetos', href: isProjectsPage ? '#projects-top' : '#projects' },
+    { label: 'Sobre', href: isProjectsPage ? '/#about' : '#about' },
+    { label: 'Habilidades', href: isProjectsPage ? '/#skills' : '#skills' },
+    { label: 'Contato', href: isProjectsPage ? '/#contact' : '#contact' },
   ];
 
   const socialLinks = [
@@ -66,7 +66,7 @@ export default function ClayNavigation({ isProjectsPage = false }: ClayNavigatio
                   boxShadow: '10px 10px 20px rgba(197,170,255,0.4), -8px -8px 18px rgba(255,255,255,1)',
                 }}
               >
-                Portfolio
+                Davi Merigo
               </motion.div>
             </motion.a>
 

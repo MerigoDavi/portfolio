@@ -56,18 +56,21 @@ export default function ClayContactSection() {
       label: 'Email',
       value: 'merigodavi.dev@gmail.com',
       href: 'mailto:merigodavi.dev@gmail.com',
+      isClickable: true,
     },
     {
       icon: Phone,
-      label: 'Phone',
-      value: '+55 (11) 99999-9999',
-      href: 'tel:+5511999999999',
+      label: 'Telefone',
+      value: '+55 (12) 98175-7449',
+      href: 'https://wa.me/5512981757449?text=Olá! Vi seu portfolio e gostaria de conversar',
+      isClickable: true,
     },
     {
       icon: MapPin,
-      label: 'Location',
-      value: 'São Paulo, Brazil',
+      label: 'Localização',
+      value: 'São Paulo, Brasil',
       href: '#',
+      isClickable: false,
     },
   ];
 
@@ -124,10 +127,10 @@ export default function ClayContactSection() {
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-7xl font-black text-[#6B5B4F] mb-6">
-            Get In <span className="bg-gradient-to-r from-[#FFAC82] via-[#C5AAFF] to-[#7EC8E3] bg-clip-text text-transparent">Touch</span>
+            <span className="bg-gradient-to-r from-[#FFAC82] via-[#C5AAFF] to-[#7EC8E3] bg-clip-text text-transparent">Contato</span>
           </h2>
           <p className="text-xl md:text-2xl text-[#8B7B6F] max-w-3xl mx-auto leading-relaxed">
-            Have a project in mind? Let's create something amazing together
+            Interessado em trabalhar junto? Manda uma mensagem
           </p>
         </motion.div>
 
@@ -149,7 +152,7 @@ export default function ClayContactSection() {
                 boxShadow: '16px 16px 32px rgba(255,233,184,0.3), -12px -12px 28px rgba(255,255,255,0.9), inset 2px 2px 4px rgba(255,255,255,0.6)',
               }}
             >
-              <h3 className="text-3xl font-bold text-[#6B5B4F] mb-8">Send a Message</h3>
+              <h3 className="text-3xl font-bold text-[#6B5B4F] mb-8">Mande uma Mensagem</h3>
 
               {isSubmitted ? (
                 <motion.div
@@ -168,15 +171,15 @@ export default function ClayContactSection() {
                   >
                     <CheckCircle className="w-20 h-20 text-[#66DD9A] mb-6" />
                   </motion.div>
-                  <h4 className="text-2xl font-bold text-[#6B5B4F] mb-2">Message Sent!</h4>
-                  <p className="text-[#8B7B6F]">I'll get back to you soon.</p>
+                  <h4 className="text-2xl font-bold text-[#6B5B4F] mb-2">Mensagem Enviada!</h4>
+                  <p className="text-[#8B7B6F]">Entrarei em contato em breve.</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name Input */}
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-[#6B5B4F] mb-2">
-                      Your Name
+                      Seu Nome
                     </label>
                     <motion.input
                       type="text"
@@ -188,7 +191,7 @@ export default function ClayContactSection() {
                       style={{
                         boxShadow: 'inset 4px 4px 8px rgba(255,233,184,0.3), inset -2px -2px 6px rgba(255,255,255,0.8)',
                       }}
-                      placeholder="John Doe"
+                      placeholder="João Silva"
                       whileFocus={{
                         scale: 1.02,
                         boxShadow: 'inset 6px 6px 12px rgba(255,233,184,0.4), inset -3px -3px 8px rgba(255,255,255,0.9)',
@@ -204,7 +207,7 @@ export default function ClayContactSection() {
                   {/* Email Input */}
                   <div>
                     <label htmlFor="email" className="block text-sm font-semibold text-[#6B5B4F] mb-2">
-                      Your Email
+                      Seu Email
                     </label>
                     <motion.input
                       type="email"
@@ -216,7 +219,7 @@ export default function ClayContactSection() {
                       style={{
                         boxShadow: 'inset 4px 4px 8px rgba(255,233,184,0.3), inset -2px -2px 6px rgba(255,255,255,0.8)',
                       }}
-                      placeholder="john@example.com"
+                      placeholder="joao@exemplo.com"
                       whileFocus={{
                         scale: 1.02,
                         boxShadow: 'inset 6px 6px 12px rgba(255,233,184,0.4), inset -3px -3px 8px rgba(255,255,255,0.9)',
@@ -232,7 +235,7 @@ export default function ClayContactSection() {
                   {/* Message Input */}
                   <div>
                     <label htmlFor="message" className="block text-sm font-semibold text-[#6B5B4F] mb-2">
-                      Your Message
+                      Sua Mensagem
                     </label>
                     <motion.textarea
                       id="message"
@@ -244,7 +247,7 @@ export default function ClayContactSection() {
                       style={{
                         boxShadow: 'inset 4px 4px 8px rgba(255,233,184,0.3), inset -2px -2px 6px rgba(255,255,255,0.8)',
                       }}
-                      placeholder="Tell me about your project..."
+                      placeholder="Conte-me sobre seu projeto..."
                       whileFocus={{
                         scale: 1.02,
                         boxShadow: 'inset 6px 6px 12px rgba(255,233,184,0.4), inset -3px -3px 8px rgba(255,255,255,0.9)',
@@ -276,7 +279,7 @@ export default function ClayContactSection() {
                     disabled={isLoading}
                   >
                     <span className="flex items-center justify-center gap-3">
-                      <span>{isLoading ? 'Sending...' : 'Send Message'}</span>
+                      <span>{isLoading ? 'Enviando...' : 'Enviar Mensagem'}</span>
                       {isLoading ? (
                         <motion.div
                           className="w-5 h-5 border-2 border-[#6B5B4F] border-t-transparent rounded-full"
@@ -309,10 +312,46 @@ export default function ClayContactSection() {
             <div className="space-y-6">
               {contactInfo.map((info, index) => {
                 const Icon = info.icon;
-                return (
+                const CardContent = (
+                  <motion.div
+                    className="bg-gradient-to-br from-[#C8E6F5] to-[#A7D8EA] rounded-[32px] p-6 flex items-center gap-4"
+                    style={{
+                      boxShadow: '10px 10px 20px rgba(126,200,227,0.3), -8px -8px 18px rgba(255,255,255,0.9)',
+                    }}
+                    whileHover={{
+                      y: -6,
+                      scale: 1.02,
+                      boxShadow: '12px 12px 24px rgba(126,200,227,0.4), -10px -10px 22px rgba(255,255,255,1)',
+                    }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 400,
+                      damping: 17,
+                    }}
+                  >
+                    <motion.div
+                      className="w-14 h-14 bg-white/40 rounded-[18px] flex items-center justify-center flex-shrink-0"
+                      style={{
+                        boxShadow: '4px 4px 8px rgba(126,200,227,0.2), -3px -3px 6px rgba(255,255,255,0.9)',
+                      }}
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <Icon className="w-6 h-6 text-[#6B5B4F]" />
+                    </motion.div>
+                    <div>
+                      <p className="text-sm font-semibold text-[#8B7B6F]">{info.label}</p>
+                      <p className="text-lg font-bold text-[#6B5B4F]">{info.value}</p>
+                    </div>
+                  </motion.div>
+                );
+
+                return info.isClickable ? (
                   <motion.a
                     key={info.label}
                     href={info.href}
+                    target={info.label === 'Telefone' ? '_blank' : undefined}
+                    rel={info.label === 'Telefone' ? 'noopener noreferrer' : undefined}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -322,38 +361,22 @@ export default function ClayContactSection() {
                       stiffness: 100,
                     }}
                   >
-                    <motion.div
-                      className="bg-gradient-to-br from-[#C8E6F5] to-[#A7D8EA] rounded-[32px] p-6 flex items-center gap-4"
-                      style={{
-                        boxShadow: '10px 10px 20px rgba(126,200,227,0.3), -8px -8px 18px rgba(255,255,255,0.9)',
-                      }}
-                      whileHover={{
-                        y: -6,
-                        scale: 1.02,
-                        boxShadow: '12px 12px 24px rgba(126,200,227,0.4), -10px -10px 22px rgba(255,255,255,1)',
-                      }}
-                      transition={{
-                        type: 'spring',
-                        stiffness: 400,
-                        damping: 17,
-                      }}
-                    >
-                      <motion.div
-                        className="w-14 h-14 bg-white/40 rounded-[18px] flex items-center justify-center flex-shrink-0"
-                        style={{
-                          boxShadow: '4px 4px 8px rgba(126,200,227,0.2), -3px -3px 6px rgba(255,255,255,0.9)',
-                        }}
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.6 }}
-                      >
-                        <Icon className="w-6 h-6 text-[#6B5B4F]" />
-                      </motion.div>
-                      <div>
-                        <p className="text-sm font-semibold text-[#8B7B6F]">{info.label}</p>
-                        <p className="text-lg font-bold text-[#6B5B4F]">{info.value}</p>
-                      </div>
-                    </motion.div>
+                    {CardContent}
                   </motion.a>
+                ) : (
+                  <motion.div
+                    key={info.label}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      delay: index * 0.1,
+                      type: 'spring',
+                      stiffness: 100,
+                    }}
+                  >
+                    {CardContent}
+                  </motion.div>
                 );
               })}
             </div>
@@ -369,7 +392,7 @@ export default function ClayContactSection() {
                 stiffness: 80,
               }}
             >
-              <h4 className="text-2xl font-bold text-[#6B5B4F] mb-6">Connect With Me</h4>
+              <h4 className="text-2xl font-bold text-[#6B5B4F] mb-6">Conecte-se Comigo</h4>
               <div className="grid grid-cols-3 gap-4">
                 {socialLinks.map((social, index) => {
                   const Icon = social.icon;
@@ -429,9 +452,9 @@ export default function ClayContactSection() {
                 boxShadow: '12px 12px 24px rgba(197,170,255,0.3), -8px -8px 20px rgba(255,255,255,0.9)',
               }}
             >
-              <h4 className="text-2xl font-bold text-[#6B5B4F] mb-3">Let's Work Together!</h4>
+              <h4 className="text-2xl font-bold text-[#6B5B4F] mb-3">Fique à Vontade para Entrar em Contato</h4>
               <p className="text-[#8B7B6F] leading-relaxed">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                Estou aberto a conversar sobre projetos, oportunidades de trabalho ou trocar ideias sobre tecnologia.
               </p>
             </motion.div>
           </motion.div>

@@ -39,7 +39,7 @@ export default function ClaySkillsSection() {
       ],
     },
     {
-      title: 'Tools & Design',
+      title: 'Ferramentas & Design',
       color: 'from-[#B3F5CC] to-[#8DE9B3]',
       skills: [
         { name: 'Docker', icon: SiDocker, level: 82 },
@@ -98,10 +98,10 @@ export default function ClaySkillsSection() {
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-7xl font-black text-[#6B5B4F] mb-6">
-            Technical <span className="bg-gradient-to-r from-[#FFAC82] via-[#C5AAFF] to-[#66DD9A] bg-clip-text text-transparent">Skills</span>
+            Stack <span className="bg-gradient-to-r from-[#FFAC82] via-[#C5AAFF] to-[#66DD9A] bg-clip-text text-transparent">Técnico</span>
           </h2>
           <p className="text-xl md:text-2xl text-[#8B7B6F] max-w-3xl mx-auto leading-relaxed">
-            A diverse toolkit for building exceptional digital experiences
+            As tecnologias que uso no dia a dia
           </p>
         </motion.div>
 
@@ -227,7 +227,7 @@ export default function ClaySkillsSection() {
           }}
           className="mt-16 text-center"
         >
-          <p className="text-[#8B7B6F] font-semibold mb-6">Also experienced with:</p>
+          <p className="text-[#8B7B6F] font-semibold mb-6">Experiência adicional:</p>
           <div className="flex flex-wrap justify-center gap-4">
             {['Machine Learning', 'Computer Vision', 'IoT', 'GraphQL', 'Redis', 'AWS', 'CI/CD', 'Agile'].map((tech, index) => (
               <motion.span

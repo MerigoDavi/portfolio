@@ -11,7 +11,7 @@ export default function ClayProjectsSection() {
       id: 1,
       title: 'Sistema de Análise de Patologias com IA',
       subtitle: 'Instituto de Pesquisas Tecnológicas (IPT)',
-      description: 'Desenvolvimento de aplicação desktop para automatizar identificação e classificação de fissuras em edificações usando IA. Construído em Rust e Python para alto desempenho offline, com sistema de geração automática de relatórios e galeria visual.',
+      description: 'Aplicação desktop em Rust e Python que automatiza a análise de patologias em edificações. Implementa visão computacional para detecção de fissuras, processamento offline e geração automática de laudos técnicos.',
       tags: ['Rust', 'Python', 'IA', 'Visão Computacional', 'Desktop'],
       github: 'https://github.com/MerigoDavi',
       live: 'https://github.com/MerigoDavi',
@@ -26,7 +26,7 @@ export default function ClayProjectsSection() {
       id: 2,
       title: 'Hígia: Dispensação Farmacêutica Automatizada',
       subtitle: 'Hospital das Clínicas da Unicamp',
-      description: 'Desenvolvimento de braço robótico para dispensação de medicamentos. Entreguei interface do usuário e sistemas de comunicação do robô, implementando algoritmos de visão computacional para reconhecimento de medicamentos.',
+      description: 'Braço robótico para dispensação automatizada de medicamentos. Fui responsável pela interface web e pela comunicação entre o sistema e o robô. Implementei o reconhecimento visual dos medicamentos usando computer vision.',
       tags: ['React', 'IoT', 'Visão Computacional', 'Robótica', 'Python'],
       github: 'https://github.com/MerigoDavi',
       live: 'https://github.com/MerigoDavi',
@@ -41,7 +41,7 @@ export default function ClayProjectsSection() {
       id: 3,
       title: 'GPS: Sistema de Previsão de Gás',
       subtitle: 'Startup Compass',
-      description: 'Criação de modelo preditivo robusto para detecção de vazamentos de gás e identificação de fraudes usando machine learning. Implementação de técnicas de ensemble learning resultando em 82% de precisão na detecção precoce de anomalias.',
+      description: 'Modelo de machine learning para prever vazamentos de gás e detectar fraudes. Usei ensemble learning para melhorar a precisão, chegando a 82% de acurácia na identificação de anomalias.',
       tags: ['Python', 'Machine Learning', 'Ensemble', 'Data Science', 'Power BI'],
       github: 'https://github.com/MerigoDavi',
       live: 'https://github.com/MerigoDavi',
@@ -56,8 +56,8 @@ export default function ClayProjectsSection() {
       id: 4,
       title: 'Borbulha: Rede Social de Voluntários',
       subtitle: 'ONG Parceiros Voluntários',
-      description: 'Desenvolvimento de aplicação web para facilitar interação entre voluntários, ONGs e empresas. Implementação completa de guia de estilos visual e desenvolvimento frontend com React e design responsivo de alta qualidade.',
-      tags: ['React', 'TypeScript', 'UI/UX', 'Figma', 'TailwindCSS'],
+      description: 'Plataforma web que conecta voluntários, ONGs e empresas. Criei o design system e implementei todo o frontend, com foco em responsividade e usabilidade.',
+      tags: ['TypeScript', 'UI/UX', 'Figma', 'TailwindCSS', 'HTML/CSS'],
       github: 'https://github.com/MerigoDavi',
       live: 'https://github.com/MerigoDavi',
       color: 'from-green-500 via-emerald-500 to-teal-500',
@@ -156,21 +156,21 @@ export default function ClayProjectsSection() {
             >
               <Sparkles className="w-5 h-5 text-[#6B5B4F]" />
             </motion.div>
-            <span className="font-bold text-[#6B5B4F]">Featured Work</span>
+            <span className="font-bold text-[#6B5B4F]">Principais Projetos</span>
           </motion.div>
 
           {/* Title */}
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-[#6B5B4F] leading-none">
-            Selected
+            Projetos
             <br />
             <span className="bg-gradient-to-r from-[#FFAC82] via-[#C5AAFF] to-[#7EC8E3] bg-clip-text text-transparent">
-              Projects
+              Selecionados
             </span>
           </h2>
 
           {/* Description */}
           <p className="text-xl md:text-2xl text-[#8B7B6F] max-w-3xl mx-auto leading-relaxed">
-            A curated collection of projects demonstrating technical excellence, creative problem-solving, and attention to tactile details
+            Alguns trabalhos que fiz em parceria com instituições e empresas
           </p>
         </motion.div>
 
@@ -196,7 +196,7 @@ export default function ClayProjectsSection() {
         >
           <ClayButton variant="mint" size="lg" href="/projects">
             <span className="flex items-center gap-3">
-              <span>View All Projects</span>
+              <span>Ver Todos os Projetos</span>
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{

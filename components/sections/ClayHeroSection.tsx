@@ -175,7 +175,7 @@ export default function ClayHeroSection() {
                 <Sparkles className="w-6 h-6 text-[#6B5B4F]" />
               </motion.div>
               <span className="font-bold text-lg text-[#6B5B4F] tracking-wide">
-                Available for Projects
+                Aberto a Novos Projetos
               </span>
             </motion.div>
           </motion.div>
@@ -207,7 +207,7 @@ export default function ClayHeroSection() {
                   ease: 'easeInOut',
                 }}
               >
-                Crafting
+                Construindo
               </motion.span>
               <motion.span
                 className="block bg-gradient-to-r from-[#FFAC82] via-[#C5AAFF] to-[#7EC8E3] bg-clip-text text-transparent"
@@ -224,7 +224,7 @@ export default function ClayHeroSection() {
                   ease: 'easeInOut',
                 }}
               >
-                Digital Magic
+                Para a Web
               </motion.span>
             </h1>
 
@@ -234,8 +234,8 @@ export default function ClayHeroSection() {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="text-xl md:text-3xl text-[#8B7B6F] max-w-4xl mx-auto leading-relaxed font-medium"
             >
-              Transforming <span className="font-bold text-[#6B5B4F]">complex ideas</span> into{' '}
-              <span className="font-bold text-[#6B5B4F]">delightful experiences</span> through code, creativity, and craftsmanship
+              Desenvolvo aplicações que combinam <span className="font-bold text-[#6B5B4F]">tecnologia com usabilidade</span>.{' '}
+              Do <span className="font-bold text-[#6B5B4F]">frontend ao machine learning</span>
             </motion.p>
           </motion.div>
 
@@ -253,7 +253,7 @@ export default function ClayHeroSection() {
           >
             <ClayButton variant="peach" size="lg" href="#projects">
               <span className="flex items-center gap-3">
-                <span>View Projects</span>
+                <span>Ver Projetos</span>
                 <motion.div
                   animate={{ y: [0, 5, 0] }}
                   transition={{
@@ -268,7 +268,7 @@ export default function ClayHeroSection() {
             </ClayButton>
 
             <ClayButton variant="blue" size="lg" href="#contact">
-              Get In Touch
+              Entre em Contato
             </ClayButton>
           </motion.div>
 
@@ -308,7 +308,7 @@ export default function ClayHeroSection() {
                 />
               </div>
               <span className="text-xs text-[#A89B8F] uppercase tracking-[0.25em] font-bold">
-                Scroll
+                Role
               </span>
             </motion.div>
           </motion.div>

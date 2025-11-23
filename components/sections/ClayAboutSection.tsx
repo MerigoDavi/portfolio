@@ -7,26 +7,26 @@ export default function ClayAboutSection() {
   const skills = [
     {
       icon: Code2,
-      title: 'Full-Stack Development',
-      description: 'Building robust applications with modern technologies',
+      title: 'Desenvolvimento Full-Stack',
+      description: 'React, Next.js, Python e Rust para web e desktop',
       color: 'from-[#C8E6F5] to-[#A7D8EA]',
     },
     {
       icon: Palette,
-      title: 'UI/UX Design',
-      description: 'Creating beautiful and intuitive user experiences',
+      title: 'Design e Interface',
+      description: 'Prototipação no Figma e implementação com TailwindCSS',
       color: 'from-[#E5D4FF] to-[#D5BFFF]',
     },
     {
       icon: Zap,
-      title: 'Performance',
-      description: 'Optimizing for speed and efficiency',
+      title: 'IA e Visão Computacional',
+      description: 'Machine learning aplicado a problemas reais',
       color: 'from-[#B3F5CC] to-[#8DE9B3]',
     },
     {
       icon: Users,
-      title: 'Collaboration',
-      description: 'Working effectively in team environments',
+      title: 'Trabalho em Equipe',
+      description: 'Experiência em projetos colaborativos e metodologias ágeis',
       color: 'from-[#FFD4B8] to-[#FFC09D]',
     },
   ];
@@ -66,10 +66,10 @@ export default function ClayAboutSection() {
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-7xl font-black text-[#6B5B4F] mb-6">
-            About <span className="bg-gradient-to-r from-[#C5AAFF] to-[#7EC8E3] bg-clip-text text-transparent">Me</span>
+            Sobre <span className="bg-gradient-to-r from-[#C5AAFF] to-[#7EC8E3] bg-clip-text text-transparent">Mim</span>
           </h2>
           <p className="text-xl md:text-2xl text-[#8B7B6F] max-w-3xl mx-auto leading-relaxed">
-            A passionate developer crafting digital experiences with care and precision
+            Dev full-stack com experiência em projetos reais
           </p>
         </motion.div>
 
@@ -100,9 +100,9 @@ export default function ClayAboutSection() {
             }}
           >
             <p className="text-2xl md:text-3xl text-[#6B5B4F] leading-relaxed font-medium">
-              I'm a creative developer who loves building things that live on the internet. 
-              My focus is on creating <span className="font-bold">exceptional digital experiences</span> that 
-              are not only functional but also <span className="font-bold">beautiful and memorable</span>.
+              Tenho trabalhado em projetos que vão desde <span className="font-bold">aplicações desktop para análise de 
+              patologias</span> até <span className="font-bold">sistemas de robótica hospitalar</span>. Gosto de desafios técnicos e de 
+              aprender tecnologias novas.
             </p>
           </motion.div>
         </motion.div>

@@ -211,7 +211,7 @@ export default function ClayProjectCard({ project, index }: ClayProjectCardProps
                 transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 <FaGithub className="w-5 h-5" />
-                <span>Code</span>
+                <span>Código</span>
               </motion.a>
             )}
             {project.live && (
@@ -231,7 +231,7 @@ export default function ClayProjectCard({ project, index }: ClayProjectCardProps
                 transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 <ExternalLink className="w-5 h-5" />
-                <span>Live Demo</span>
+                <span>Ver Demo</span>
               </motion.a>
             )}
           </motion.div>

@@ -19,11 +19,11 @@ export default function Footer({ isProjectsPage = false }: FooterProps) {
   ];
 
   const quickLinks = [
-    { name: 'Home', href: isProjectsPage ? '/#home' : '#home' },
-    { name: 'About', href: isProjectsPage ? '/#about' : '#about' },
-    { name: 'Skills', href: isProjectsPage ? '/#skills' : '#skills' },
-    { name: 'Projects', href: isProjectsPage ? '#projects-top' : '#projects' },
-    { name: 'Contact', href: isProjectsPage ? '/#contact' : '#contact' },
+    { name: 'Início', href: isProjectsPage ? '/#home' : '#home' },
+    { name: 'Sobre', href: isProjectsPage ? '/#about' : '#about' },
+    { name: 'Habilidades', href: isProjectsPage ? '/#skills' : '#skills' },
+    { name: 'Projetos', href: isProjectsPage ? '#projects-top' : '#projects' },
+    { name: 'Contato', href: isProjectsPage ? '/#contact' : '#contact' },
   ];
 
   const scrollToTop = () => {
@@ -48,10 +48,10 @@ export default function Footer({ isProjectsPage = false }: FooterProps) {
                 boxShadow: '8px 8px 16px rgba(197,170,255,0.3), -6px -6px 14px rgba(255,255,255,0.9)',
               }}
             >
-              <h3 className="text-3xl font-black text-[#6B5B4F]">Portfolio</h3>
+              <h3 className="text-3xl font-black text-[#6B5B4F]">Davi Merigo</h3>
             </motion.div>
             <p className="text-[#8B7B6F] leading-relaxed max-w-xs font-medium">
-              Transformando ideias em experiências digitais memoráveis com código limpo e design excepcional.
+              Desenvolvendo para a web com tecnologias modernas e boas práticas.
             </p>
           </motion.div>
 
@@ -141,14 +141,7 @@ export default function Footer({ isProjectsPage = false }: FooterProps) {
             transition={{ duration: 0.6 }}
             className="flex items-center gap-2 text-sm text-[#8B7B6F] font-semibold"
           >
-            <span>© {currentYear} Feito com</span>
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <HiHeart className="w-4 h-4 text-[#FFAC82]" />
-            </motion.div>
-            <span>por Você</span>
+            <span>© {currentYear} Desenvolvido por Davi Oliveira</span>
           </motion.div>
 
           <motion.p
